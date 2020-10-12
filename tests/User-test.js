@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const User = require('../src/User');
 
-const sampleData = [{
+const sampleUsers = [{
   "name": "Saige O'Kon",
   "id": 1,
   "pantry": [
@@ -391,22 +391,182 @@ const sampleData = [{
   ]
 }];
 
+const sampleRecipes = [{
+  "id": 595736,
+  "image": "https://spoonacular.com/recipeImages/595736-556x370.jpg",
+  "ingredients": [
+    {
+      "id": 20081,
+      "quantity": {
+        "amount": 1.5,
+        "unit": "c"
+      }
+    },
+    {
+      "id": 18372,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "id": 1123,
+      "quantity": {
+        "amount": 1,
+        "unit": "large"
+      }
+    },
+    {
+      "id": 19335,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "c"
+      }
+    },
+    {
+      "id": 19206,
+      "quantity": {
+        "amount": 3,
+        "unit": "Tbsp"
+      }
+    },
+    {
+      "id": 19334,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "c"
+      }
+    },
+    {
+      "id": 2047,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    },
+    {
+      "id": 1012047,
+      "quantity": {
+        "amount": 24,
+        "unit": "servings"
+      }
+    },
+    {
+      "id": 10019903,
+      "quantity": {
+        "amount": 2,
+        "unit": "c"
+      }
+    },
+    {
+      "id": 1145,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "c"
+      }
+    },
+    {
+      "id": 2050,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "tsp"
+      }
+    }
+  ],
+  "instructions": [
+    {
+      "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
+      "number": 1
+    },
+    {
+      "instruction": "Add egg and vanilla and mix until combined.",
+      "number": 2
+    },
+    {
+      "instruction": "Add dry ingredients and mix on low just until incorporated. Stir in chocolate chips.Scoop the dough into 1,5 tablespoon size balls and place on a plate or sheet. Cover with saran wrap and chill at least 2 hours or overnight.When ready to bake, preheat oven to 350 degrees.",
+      "number": 3
+    },
+    {
+      "instruction": "Place the cookie dough balls into ungreased muffin pan. Sprinkle with sea salt.",
+      "number": 4
+    },
+    {
+      "instruction": "Bake for 9 to 10 minutes, or until you see the edges start to brown.",
+      "number": 5
+    },
+    {
+      "instruction": "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.",
+      "number": 6
+    }
+  ],
+  "name": "Loaded Chocolate Chip Pudding Cookie Cups",
+  "tags": [
+    "antipasti",
+    "starter",
+    "snack",
+    "appetizer",
+    "antipasto",
+    "hor d'oeuvre"
+  ]
+}];
+
 describe('User', () => {
 
   it('should be a function', function() {
-    let user = new User(sampleData[0]);
+    let user = new User(sampleUsers[0]);
     expect(User).to.be.a('function');
   });
 
   it('should be an instance of the User class', function() {
-    let user = new User(sampleData[1]);
+    let user = new User(sampleUsers[1]);
     expect(user).to.be.an.instanceof(User);
   });
 
   it('should have a name of our user', function() {
-    let user1 = new User(sampleData[0]);
-    let user2 = new User(sampleData[1]);
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
     expect(user1.name).to.deep.equal("Saige O'Kon");
     expect(user2.name).to.deep.equal("Ephraim Goyette");
   });
+
+  it('should have an user ID', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    expect(user1.id).to.deep.equal(1);
+    expect(user2.id).to.deep.equal(2);
+  });
+
+  it('should have a user pantry which stores ingredients', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    expect(user1.pantry).to.be.a('array');
+    expect(user2.pantry[0].ingredient).to.deep.equal(6150);
+  });
+
+  it('should have a list of favorite recipes', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    expect(user1.favorites).to.deep.equal([]);
+  });
+
+  it('should have a list of recipes to cook', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    expect(user2.recipesToCook).to.deep.equal([]);
+  });
+
+  it('should have a shopping list', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    expect(user1.shoppingList).to.deep.equal([]);
+  });
+
+  it('should add recipes to the list of favorites', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let recipe = sampleRecipes[0];
+    user1.addToFavorites(recipe);
+    expect(user1.favorites.includes(recipe)).to.deep.equal(true);
+  });
+  
 });

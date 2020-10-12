@@ -8,7 +8,9 @@ class User {
     this.shoppingList = []
   }
 
-
+  addToFavorites(recipe) {
+    return this.favorites.push(recipe);
+  }
 }
 
 
