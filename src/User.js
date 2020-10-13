@@ -21,6 +21,21 @@ class User {
       return this.favorites.splice(targetIndex, 1);
     };
   }
+
+  addToRecipesToCook(recipe) {
+    return this.recipesToCook.push(recipe);
+  }
+
+  removeFromRecipesToCook(recipe) {
+    if (this.recipesToCook.includes(recipe)) {
+      let target = this.recipesToCook.find(selectedRecipe => {
+        return selectedRecipe.name === recipe.name
+      });
+      let targetIndex = this.recipesToCook.indexOf(target);
+      return this.recipesToCook.splice(targetIndex, 1);
+    };
+  }
+
 }
 
 
