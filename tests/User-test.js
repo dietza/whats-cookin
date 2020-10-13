@@ -3,6 +3,22 @@ const expect = chai.expect;
 
 const User = require('../src/User');
 
+const sampleIngredients = [{
+    "id": 20081,
+    "name": "wheat flour",
+    "estimatedCostInCents": 142
+  },
+  {
+    "id": 18372,
+    "name": "bicarbonate of soda",
+    "estimatedCostInCents": 582
+  },
+  {
+    "id": 1123,
+    "name": "eggs",
+    "estimatedCostInCents": 472
+  }];
+
 const sampleUsers = [{
   "name": "Saige O'Kon",
   "id": 1,
@@ -595,5 +611,25 @@ describe('User', () => {
     console.log(user2.favorites);
     user2.removeFromRecipesToCook(recipe);
     expect(user2.recipesToCook.includes(recipe)).to.deep.equal(false);
+  });
+
+  it('should add ingredients to the shopping list', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let ingredient = sampleIngredients[0];
+    user1.addToShoppingList(ingredient);
+    console.log('addToShoppingList test (ingredient) ==>', ingredient);
+    expect(user1.shoppingList.includes(ingredient)).to.deep.equal(true);
+  });
+
+  it('should remove ingredients from the shopping list', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let ingredient = sampleIngredients[1];
+    user2.addToShoppingList(ingredient);
+    console.log('removeFromShoppingList test (ingredient) ==>', ingredient);
+    console.log(user2.shoppingList);
+    user2.removeFromShoppingList(ingredient);
+    expect(user2.shoppingList.includes(ingredient)).to.deep.equal(false);
   });
 });

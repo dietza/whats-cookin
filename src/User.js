@@ -36,6 +36,21 @@ class User {
     };
   }
 
+  addToShoppingList(ingredient) {
+    return this.shoppingList.push(ingredient);
+  }
+
+  removeFromShoppingList(ingredient) {
+    if (this.shoppingList.includes(ingredient)) {
+      let target = this.shoppingList.find(selectedIngredient => {
+        console.log(ingredient);
+        return selectedIngredient.id === ingredient.id
+      });
+      let targetIndex = this.shoppingList.indexOf(target);
+      return this.shoppingList.splice(targetIndex, 1);
+    };
+  }
+
 }
 
 
