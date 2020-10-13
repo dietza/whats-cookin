@@ -58,6 +58,13 @@ class User {
     return result;
   }
 
+  searchRecipesToCook(type) {
+    const result = this.recipesToCook.filter(plannedRecipe => {
+      return plannedRecipe.tags.includes(type);
+    })
+    return result;
+  }
+
 }
 
 

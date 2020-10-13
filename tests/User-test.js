@@ -852,7 +852,19 @@ describe('User', () => {
     user1.addToFavorites(recipe1);
     user1.addToFavorites(recipe2);
     user1.addToFavorites(recipe3);
-    // user1.searchFavorites('snack');
     expect(user1.searchFavorites('snack')).to.deep.equal([recipe1]);
+  });
+
+  it('should search for and return a recipe by type from the list of recipes to cook', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let recipe1 = sampleRecipes[0];
+    let recipe2 = sampleRecipes[1];
+    let recipe3 = sampleRecipes[2];
+    user2.addToRecipesToCook(recipe1);
+    user2.addToRecipesToCook(recipe2);
+    user2.addToRecipesToCook(recipe3);
+    console.log('addToRecipesToCook test (recipesToCook) ==>', user2.recipesToCook);
+    expect(user2.searchRecipesToCook('sauce')).to.deep.equal([recipe3]);
   });
 });
