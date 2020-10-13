@@ -568,5 +568,13 @@ describe('User', () => {
     user1.addToFavorites(recipe);
     expect(user1.favorites.includes(recipe)).to.deep.equal(true);
   });
-  
+
+  it('should be able to remove recipes from the list of favorites', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let recipe = sampleRecipes[0];
+    user2.addToFavorites(recipe);
+    user2.removeFromFavorites(recipe);
+    expect(user2.favorites.includes(recipe)).to.deep.equal(false);
+  });
 });
