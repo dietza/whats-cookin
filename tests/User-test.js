@@ -852,7 +852,7 @@ describe('User', () => {
     user1.addToFavorites(recipe1);
     user1.addToFavorites(recipe2);
     user1.addToFavorites(recipe3);
-    expect(user1.searchFavorites('snack')).to.deep.equal([recipe1]);
+    expect(user1.searchRecipes('favorites', 'snack')).to.deep.equal([recipe1]);
   });
 
   it('should search for and return a recipe by type from the list of recipes to cook', function() {
@@ -865,6 +865,30 @@ describe('User', () => {
     user2.addToRecipesToCook(recipe2);
     user2.addToRecipesToCook(recipe3);
     console.log('addToRecipesToCook test (recipesToCook) ==>', user2.recipesToCook);
-    expect(user2.searchRecipesToCook('sauce')).to.deep.equal([recipe3]);
+    expect(user2.searchRecipes('recipesToCook', 'sauce')).to.deep.equal([recipe3]);
+  });
+
+  it('should search for saved recipes by name', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let recipe1 = sampleRecipes[0];
+    let recipe2 = sampleRecipes[1];
+    let recipe3 = sampleRecipes[2];
+    user1.addToRecipesToCook(recipe1);
+    user1.addToFavorites(recipe2);
+    user1.addToRecipesToCook(recipe3);
+    expect(user1.searchRecipes('recipesToCook', "Loaded Chocolate Chip Pudding Cookie Cups")).to.deep.equal([recipe1]);
+  });
+
+  it.skip('should search for saved recipes by ingredient', function() {
+    let user1 = new User(sampleUsers[0]);
+    let user2 = new User(sampleUsers[1]);
+    let recipe1 = sampleRecipes[0];
+    let recipe2 = sampleRecipes[1];
+    let recipe3 = sampleRecipes[2];
+    user2.addToRecipesToCook(recipe1);
+    user2.addToFavorites(recipe2);
+    user2.addToRecipesToCook(recipe3);
+    expect(user2.searchRecipes('recipesToCook', "bicarbonate of soda")).to.deep.equal([recipe1]);
   });
 });

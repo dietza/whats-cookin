@@ -51,20 +51,26 @@ class User {
     };
   }
 
-  searchFavorites(type) {
-    const result = this.favorites.filter(favRecipe => {
-      return favRecipe.tags.includes(type);
-    })
-    return result;
-  }
+  // searchFavorites(type) {
+  //   const result = this.favorites.filter(favRecipe => {
+  //
+  //     // IF the searchTerm is a recipeType,
+  //     // then return all recipes whose tags include the searchTerm,
+  //     // IF the searchTerm is a recipeName,
+  //     // then return the recipe whose name matches the searchTerm,
+  //     // IF the searchTerm is an ingredient,
+  //     // then return all recipes which include ingredients with a matching ID number to the searchTerm.
+  //
+  //     return favRecipe.tags.includes(type);
+  //   })
+  //   return result;
+  // }
 
-  searchRecipesToCook(type) {
-    const result = this.recipesToCook.filter(plannedRecipe => {
-      return plannedRecipe.tags.includes(type);
-    })
-    return result;
+  searchRecipes(locationToCheck, keyword) {
+    return this[locationToCheck].filter(recipe => {
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword) || recipe.ingredients.includes(keyword);
+    });
   }
-
 }
 
 
