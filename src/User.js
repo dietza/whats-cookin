@@ -51,6 +51,13 @@ class User {
     };
   }
 
+  searchFavorites(type) {
+    const result = this.favorites.filter(favRecipe => {
+      return favRecipe.tags.includes(type);
+    })
+    return result;
+  }
+
 }
 
 
