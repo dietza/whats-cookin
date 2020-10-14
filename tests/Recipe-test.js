@@ -899,4 +899,13 @@ describe('Recipe', () => {
       "dinner"
     ]);
   });
+
+  it('should filter recipes by tag', function() {
+    let recipe1 = new Recipe(sampleRecipes[0]);
+    let recipe2 = new Recipe(sampleRecipes[1]);
+    let recipe3 = new Recipe(sampleRecipes[2]);
+    console.log('filterRecipesTag test (sampleRecipes) ==>', sampleRecipes);
+    expect(recipe1.searchRecipesByTag(sampleRecipes, 'dinner')).to.deep.equal([recipe2]);
+  });
+
 });

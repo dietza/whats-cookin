@@ -7,6 +7,12 @@ class Recipe {
     this.instructions = recipe.instructions;
     this.tags = recipe.tags;
   }
+
+  searchRecipesByTag(locationToCheck, keyword) {
+    return locationToCheck.filter(recipe => {
+      return recipe.tags.includes(keyword);
+    });
+  }
 }
 
 
