@@ -67,9 +67,13 @@ class User {
   // }
 
   searchRecipes(locationToCheck, keyword) {
-    return this[locationToCheck].filter(recipe => {
-      return recipe.tags.includes(keyword) || recipe.name.includes(keyword) || recipe.ingredients.includes(keyword);
+    const result = this[locationToCheck].filter(recipe => {
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword)
+      // || recipe.name.includes(keyword)
+      ;
     });
+    console.log('searchRecipes (filter result) ==>', result);
+    return result;
   }
 }
 

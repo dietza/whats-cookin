@@ -880,15 +880,22 @@ describe('User', () => {
     expect(user1.searchRecipes('recipesToCook', "Loaded Chocolate Chip Pudding Cookie Cups")).to.deep.equal([recipe1]);
   });
 
-  it.skip('should search for saved recipes by ingredient', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    let recipe1 = sampleRecipes[0];
-    let recipe2 = sampleRecipes[1];
-    let recipe3 = sampleRecipes[2];
-    user2.addToRecipesToCook(recipe1);
-    user2.addToFavorites(recipe2);
-    user2.addToRecipesToCook(recipe3);
-    expect(user2.searchRecipes('recipesToCook', "bicarbonate of soda")).to.deep.equal([recipe1]);
-  });
+  // it('should search for a list by ingredient', function() {
+  //   let user1 = new User(sampleUsers[0]);
+  //   let user2 = new User(sampleUsers[1]);
+  //   let recipe1 = sampleRecipes[0];
+  //   let recipe2 = sampleRecipes[1];
+  //   let recipe3 = sampleRecipes[2];
+  //   user2.addToRecipesToCook(recipe1);
+  //   user2.addToFavorites(recipe2);
+  //   user2.addToRecipesToCook(recipe3);
+  //
+  //   let ingredient1 = sampleIngredients[0];
+  //   let ingredient2 = sampleIngredients[1];
+  //   user2.addToShoppingList(ingredient1);
+  //   user2.addToShoppingList(ingredient2);
+  //   console.log('searchRecipes test (ingredient2) ==>', ingredient2);
+  //   console.log('searchRecipes test (user2.shoppingList) ==>', user2.shoppingList);
+  //   expect(user2.searchRecipes('shoppingList', "bicarbonate of soda")).to.deep.equal([ingredient2]);
+  // });
 });
