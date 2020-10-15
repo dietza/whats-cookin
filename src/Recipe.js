@@ -10,6 +10,7 @@ class Recipe {
 
   searchRecipesByTag(locationToCheck, keyword) {
     return locationToCheck.filter(recipe => {
+      console.log(recipe.tags)
       return recipe.tags.includes(keyword);
     });
   }
@@ -25,14 +26,14 @@ class Recipe {
 
   searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
     let ingredientID = this.nameToNum(keyword, ingredientsArr);
-    const result = locationToCheck.reduce((acc, currentVal) => {
-      currentVal.ingredients.forEach(ingredient => {
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
         if (ingredient.id === ingredientID) {
-          acc.push(currentVal)
+          recipeList.push(currentRecipe)
         };
-        console.log('searchRecipesByIngredient (acc) ==>', acc);
       });
-        return acc;
+        console.log('searchRecipesByIngredient (acc) ==>', recipeList);
+        return recipeList;
       }, []);
     return result;
   }
@@ -58,8 +59,5 @@ class Recipe {
     }
 
 }
-
-
-
 
 module.exports = Recipe;
