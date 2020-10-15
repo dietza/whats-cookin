@@ -58,6 +58,26 @@ class Recipe {
       return ingredient.id;
     }
 
-}
+    getCost(selectedRecipe, ingredientsArr){
+      const result = selectedRecipe.ingredients.reduce((total, currentIngredient) => {
+        console.log(currentIngredient, "Current Ingredient")
+          ingredientsArr.find(ingredient => {
+            console.log(ingredient.name)
+           ingredient.id === currentIngredient.id
+            return total += ingredient.estimatedCostInCents
+          })
+        return total
+      }, 0)
+      return result
+    }
+
+    getInstructions(selectedRecipe) {
+      const result = selectedRecipe.instructions.map(instruction => {
+        return instruction
+        })
+      return result
+      }
+
+    }
 
 module.exports = Recipe;

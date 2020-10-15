@@ -901,29 +901,30 @@ describe('Recipe', () => {
     console.log("this is the first test")
   });
 
-  it('should filter recipes by tag', function() {
-    let recipe1 = new Recipe(sampleRecipes);
-    expect(recipe1.searchRecipesByTag(sampleRecipes, 'dinner')).to.deep.equal([sampleRecipes[1]]);
-    console.log("this is the second test")
-  });
+  // it('should filter recipes by tag', function() {
+  //   let recipe1 = new Recipe(sampleRecipes);
+  //   expect(recipe1.searchRecipesByTag(sampleRecipes, 'dinner')).to.deep.equal([sampleRecipes[1]]);
+  //   console.log("this is the second test")
+  // });
 
   // Why should a single recipe be used to (or have access to)
   // search ALL recipes??
 
-  it('should find the id number of a given ingredient by name', function() {
-    let recipe1 = new Recipe(sampleRecipes[0]);
-    expect(recipe1.nameToNum('eggs', sampleIngredients)).to.deep.equal(1123);
-    console.log("this is the third test")
-  })
+  // it('should find the id number of a given ingredient by name', function() {
+  //   let recipe1 = new Recipe(sampleRecipes[0]);
+  //   expect(recipe1.nameToNum('eggs', sampleIngredients)).to.deep.equal(1123);
+  //   console.log("this is the third test")
+  // })
+  //
+  // it('should search recipes by ingredient', function() {
+  //   let recipe1 = new Recipe(sampleRecipes[0]);
 
-  it('should search recipes by ingredient', function() {
-    let recipe1 = new Recipe(sampleRecipes);
-  
-    // let ingredient1 = sampleIngredients[0];
-    // let ingredient2 = sampleIngredients[1];
-    // let ingredient3 = sampleIngredients[2];
+  //   expect(recipe1.searchRecipesByIngredient(sampleRecipes, 'bicarbonate of soda', sampleIngredients)).to.deep.equal([recipe1]);
+  //   console.log("this is the fourth test")
+  // });
 
-    expect(recipe1.searchRecipesByIngredient(sampleRecipes, 'bicarbonate of soda', sampleIngredients)).to.deep.equal([recipe1]);
-    console.log("this is the fourth test")
+  it("should be able to calculate the total cost of a recipe's ingredients", function() {
+    let recipe1 = new Recipe(sampleRecipes[0])
+    expect(recipe1.getCost(sampleRecipes[0], sampleIngredients)).to.equal(1562)
   });
 });
