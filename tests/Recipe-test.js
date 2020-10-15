@@ -908,4 +908,24 @@ describe('Recipe', () => {
     expect(recipe1.searchRecipesByTag(sampleRecipes, 'dinner')).to.deep.equal([recipe2]);
   });
 
+  // Why should a single recipe be used to (or have access to)
+  // search ALL recipes??
+
+  it('should find the id number of a given ingredientby name', function() {
+    let recipe1 = new Recipe(sampleRecipes[0]);
+    expect(recipe1.nameToNum('eggs', sampleIngredients)).to.deep.equal(1123);
+  })
+
+  it.skip('should filter recipes by ingredient', function() {
+    let recipe1 = new Recipe(sampleRecipes[0]);
+    let recipe2 = new Recipe(sampleRecipes[1]);
+    let recipe3 = new Recipe(sampleRecipes[2]);
+    // let ingredient1 = sampleIngredients[0];
+    // let ingredient2 = sampleIngredients[1];
+    // let ingredient3 = sampleIngredients[2];
+
+    console.log('filterRecipesIngd test (sampleRecipes) ==>', sampleRecipes);
+    console.log('filterRecipesIngd test (sampleIngredients) ==>', sampleIngredients);
+    expect(recipe1.searchRecipesByIngredient(sampleRecipes, 'bicarbonate of soda', sampleIngredients)).to.deep.equal([recipe1]);
+  });
 });
