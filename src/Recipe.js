@@ -24,13 +24,17 @@ class Recipe {
   // }
 
   searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
-    this.nameToNum(keyword, ingredientsArr);
-    return locationToCheck.reduce((acc, currentVal) => {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr);
+    const result = locationToCheck.reduce((acc, currentVal) => {
       currentVal.ingredients.forEach(ingredient => {
-        // if ingredient.id === ;
-      })
-      return acc;
-    }, []);
+        if (ingredient.id === ingredientID) {
+          acc.push(currentVal)
+        };
+        console.log('searchRecipesByIngredient (acc) ==>', acc);
+      });
+        return acc;
+      }, []);
+    return result;
   }
 
     // A user should be able to search recipes by ingredients.

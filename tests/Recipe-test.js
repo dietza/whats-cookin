@@ -911,12 +911,12 @@ describe('Recipe', () => {
   // Why should a single recipe be used to (or have access to)
   // search ALL recipes??
 
-  it('should find the id number of a given ingredientby name', function() {
+  it('should find the id number of a given ingredient by name', function() {
     let recipe1 = new Recipe(sampleRecipes[0]);
     expect(recipe1.nameToNum('eggs', sampleIngredients)).to.deep.equal(1123);
   })
 
-  it.skip('should filter recipes by ingredient', function() {
+  it('should search recipes by ingredient', function() {
     let recipe1 = new Recipe(sampleRecipes[0]);
     let recipe2 = new Recipe(sampleRecipes[1]);
     let recipe3 = new Recipe(sampleRecipes[2]);
