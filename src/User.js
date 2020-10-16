@@ -104,6 +104,17 @@ class User {
     return ingredient.id;
   }
   checkPantryInventory(selectedRecipe) {
+
+    this.pantry.checkInventory(selectedRecipe)
+
+//we would return an array of objects
+//if we had all the ingredients, we would return nothing
+//if we do not have any ingredients, we will create an ingredient object within the pantry array
+//that will be
+//those objects would each be ingredients needed that the pantry did not have
+//the objects would have ingredient ids and quantity needed
+//we are using reduce because of this
+    })
     const result = selectedRecipe.ingredients.reduce((acc, currentIngredient) => {
 
       return acc
