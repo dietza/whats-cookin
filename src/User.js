@@ -103,8 +103,13 @@ class User {
     let ingredient = ingredientsArr.find(ingredient => ingredient.name === ingredientName)
     return ingredient.id;
   }
-}
+  checkPantryInventory(selectedRecipe) {
+    const result = selectedRecipe.ingredients.reduce((acc, currentIngredient) => {
 
+      return acc
+      }, [])
+  return result
+}
 
 if (typeof module !== 'undefined') {
   module.exports = User;
