@@ -68,12 +68,43 @@ class User {
 
   searchRecipes(locationToCheck, keyword) {
     const result = this[locationToCheck].filter(recipe => {
-      return recipe.tags.includes(keyword) || recipe.name.includes(keyword)
-      // || recipe.name.includes(keyword)
-      ;
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword);
     });
     console.log('searchRecipes (filter result) ==>', result);
     return result;
+  }
+
+  searchSavedRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr)
+    console.log("INGREDIENT ID HERE", ingredientID)
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+          if (ingredient.id === ingredientID){
+            recipeList.push(currentRecipe)
+          };
+      });
+      return recipeList;
+    }, []);
+    return result
+  }
+
+  searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr);
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientID) {
+          recipeList.push(currentRecipe)
+        };
+      });
+        console.log('searchRecipesByIngredient (acc) ==>', recipeList);
+        return recipeList;
+      }, []);
+    return result;
+  }
+
+  nameToNum(ingredientName, ingredientsArr) {
+    let ingredient = ingredientsArr.find(ingredient => ingredient.name === ingredientName)
+    return ingredient.id;
   }
 }
 
