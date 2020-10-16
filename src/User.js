@@ -70,13 +70,11 @@ class User {
     const result = this[locationToCheck].filter(recipe => {
       return recipe.tags.includes(keyword) || recipe.name.includes(keyword);
     });
-    console.log('searchRecipes (filter result) ==>', result);
     return result;
   }
 
   searchSavedRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
     let ingredientID = this.nameToNum(keyword, ingredientsArr)
-    console.log("INGREDIENT ID HERE", ingredientID)
     const result = locationToCheck.reduce((recipeList, currentRecipe) => {
       currentRecipe.ingredients.forEach(ingredient => {
           if (ingredient.id === ingredientID){
@@ -96,7 +94,6 @@ class User {
           recipeList.push(currentRecipe)
         };
       });
-        console.log('searchRecipesByIngredient (acc) ==>', recipeList);
         return recipeList;
       }, []);
     return result;
@@ -109,4 +106,6 @@ class User {
 }
 
 
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}
