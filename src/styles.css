@@ -20,7 +20,46 @@ body {
     }
 
     .a {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+    .navbar {
+      width: 100%;
+      background-color: #555;
+      overflow: auto;
+    }
 
+    .navbar a {
+      float: left;
+      padding: 12px;
+      color: white;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background-color: #000;
+    }
+
+    .fa-search {
+      width: 10px;
+    }
+
+    .hamburger-menu-icon {
+      height: 40px;
+      width: 40px;
+    }
+
+    .search-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      /* flex-wrap: nowrap; */
+    }
+
+    .search-input {
+      width: 80px;
     }
 
     .b {

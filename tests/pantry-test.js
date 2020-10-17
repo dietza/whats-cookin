@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const User = require('../src/User');
 const Pantry = require('../src/Pantry');
-const Recipe = require('../src/Recipe');
+const Recipe = require('../src/Recipe')a;
 const Ingredient = require('../src/Ingredients');
 
 const sampleIngredients = [{

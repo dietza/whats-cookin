@@ -3,11 +3,30 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+        crossorigin="anonymous"
+      />
     <title>Whats Cookin</title>
   </head>
   <body>
     <div class="wrapper">
-      <div class="box a">Navigation</div>
+      <div class="box a navbar">
+          <button class="hamburger-button">
+            <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
+          </button>
+            <div class="search-bar">
+              <form action="/action_page.php">
+                  <input type="text" placeholder="Search all recipes..." name="search">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+
+      </div>
       <div class="box b">Welcome User</div>
       <div class="box d">
         <div class="box f">All Recipes</div>
