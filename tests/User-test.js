@@ -892,5 +892,4 @@ describe('User', () => {
     user1.addToRecipesToCook(sampleRecipes[2]);
     expect(user1.searchSavedRecipesByIngredient(user1.recipesToCook, 'wheat flour', sampleIngredients )).to.deep.equal([sampleRecipes[0]]);
   });
-
 });
