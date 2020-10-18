@@ -51,31 +51,66 @@ class User {
     };
   }
 
-  // searchFavorites(type) {
-  //   const result = this.favorites.filter(favRecipe => {
-  //
-  //     // IF the searchTerm is a recipeType,
-  //     // then return all recipes whose tags include the searchTerm,
-  //     // IF the searchTerm is a recipeName,
-  //     // then return the recipe whose name matches the searchTerm,
-  //     // IF the searchTerm is an ingredient,
-  //     // then return all recipes which include ingredients with a matching ID number to the searchTerm.
-  //
-  //     return favRecipe.tags.includes(type);
-  //   })
-  //   return result;
-  // }
-
   searchRecipes(locationToCheck, keyword) {
     const result = this[locationToCheck].filter(recipe => {
-      return recipe.tags.includes(keyword) || recipe.name.includes(keyword)
-      // || recipe.name.includes(keyword)
-      ;
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword);
     });
-    console.log('searchRecipes (filter result) ==>', result);
     return result;
   }
+
+  searchSavedRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr)
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+          if (ingredient.id === ingredientID){
+            recipeList.push(currentRecipe)
+          };
+      });
+      return recipeList;
+    }, []);
+    return result
+  }
+
+  searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr);
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientID) {
+          recipeList.push(currentRecipe)
+        };
+      });
+        return recipeList;
+      }, []);
+    return result;
+  }
+
+  nameToNum(ingredientName, ingredientsArr) {
+    let ingredient = ingredientsArr.find(ingredient => ingredient.name === ingredientName)
+    return ingredient.id;
+  }
+
+  determineAmountNeeded(selectedRecipe) {
+      const result = this.pantry.reduce((acc, currentIngredient) => {
+        selectedRecipe.ingredients.find(ingredient => {
+          if (ingredient.id === currentIngredient.ingredient) {
+            if (ingredient.quantity.amount > currentIngredient.amount) {
+            let amountNeeded = ingredient.quantity.amount - currentIngredient.amount;
+            ingredient.amountNeeded = amountNeeded;
+            return acc.push(ingredient);
+            }
+          }
+        })
+        return acc
+      }, [])
+    return result
+  }
+
+  subtractIngredients(selectedRecipe) {
+  
+  }
+
 }
 
-
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}
