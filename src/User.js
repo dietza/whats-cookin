@@ -68,60 +68,14 @@ class User {
 
   searchRecipes(locationToCheck, keyword) {
     const result = this[locationToCheck].filter(recipe => {
-      return recipe.tags.includes(keyword) || recipe.name.includes(keyword);
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword)
+      // || recipe.name.includes(keyword)
+      ;
     });
+    console.log('searchRecipes (filter result) ==>', result);
     return result;
   }
-
-  searchSavedRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
-    let ingredientID = this.nameToNum(keyword, ingredientsArr)
-    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
-      currentRecipe.ingredients.forEach(ingredient => {
-          if (ingredient.id === ingredientID){
-            recipeList.push(currentRecipe)
-          };
-      });
-      return recipeList;
-    }, []);
-    return result
-  }
-
-  searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
-    let ingredientID = this.nameToNum(keyword, ingredientsArr);
-    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
-      currentRecipe.ingredients.forEach(ingredient => {
-        if (ingredient.id === ingredientID) {
-          recipeList.push(currentRecipe)
-        };
-      });
-        return recipeList;
-      }, []);
-    return result;
-  }
-
-  nameToNum(ingredientName, ingredientsArr) {
-    let ingredient = ingredientsArr.find(ingredient => ingredient.name === ingredientName)
-    return ingredient.id;
-  }
-  checkPantryInventory(selectedRecipe) {
-
-    this.pantry.checkInventory(selectedRecipe)
-
-//we would return an array of objects
-//if we had all the ingredients, we would return nothing
-//if we do not have any ingredients, we will create an ingredient object within the pantry array
-//that will be
-//those objects would each be ingredients needed that the pantry did not have
-//the objects would have ingredient ids and quantity needed
-//we are using reduce because of this
-    })
-    const result = selectedRecipe.ingredients.reduce((acc, currentIngredient) => {
-
-      return acc
-      }, [])
-  return result
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = User;
-}
+
+module.exports = User;
