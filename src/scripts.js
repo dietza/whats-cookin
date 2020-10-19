@@ -1,6 +1,6 @@
 // ************GLOBAL VARIABLES***************//
-currentUser
-currentRecipeRepository
+let currentUser
+let currentRecipeRepository
 
 // ****************NAVIGATION*******************  //
 
