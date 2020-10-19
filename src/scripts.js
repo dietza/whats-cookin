@@ -1,17 +1,18 @@
 
 
 
-
 // ************GLOBAL VARIABLES***************//
-let currentUser
-let currentRecipeRepository
+var currentUser
+var currentRecipeRepository
+var currentIngredientRepository
 
 // ****************NAVIGATION*******************  //
 
-// let allRecipesBtn = document.querySelector(".show-all-btn");
-// let filterBtn = document.querySelector(".filter-btn");
-// let pantryBtn = document.querySelector(".my-pantry-btn");
-// let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
+let allRecipesBtn = document.querySelector(".show-all-btn");
+let filterBtn = document.querySelector(".filter-btn");
+let pantryBtn = document.querySelector(".my-pantry-btn");
+let savedRecipesBtn = document.querySelector(".saved-recipes-btn");
+
 let searchBtn = document.querySelector(".fa-search");
 let searchForm = document.querySelector("searchForm");
 let searchInput = document.querySelector("search-input");
@@ -21,7 +22,6 @@ menuOpen = false;
 // ************EVENT LISTENERS***************//
 window.addEventListener('load', function () {
  uploadData()
- displayFirstName())
 })
 
 // ************EVENT HANDLERS****************//
@@ -30,10 +30,10 @@ window.addEventListener('load', function () {
 
 
 //*****************ONLOAD******************//
-
 function uploadData() {
-  currentUser = new User(userData[getRandomIndex(userData)])
-  currentRecipeRepository = new recipeRepository(recipeData)
+  currentUser = new User(usersData[getRandomIndex(usersData)])
+  currentRecipeRepository = new RecipeRepository(recipeData)
+  displayUserData()
 }
 
 function getRandomIndex(array) {
@@ -44,10 +44,11 @@ function getRandomIndex(array) {
 //*****************DISPLAY****************//
 
 function displayUserData() {
-  userName.innerHTML =
-  <h3>Hello, ${currentUser.displayFirstName()}!</h3>
-
+  let currentFirstName = currentUser.displayFirstName()
+  document.querySelector('.welcome-bar').innerHTML =
+  `<h3> Hello, ${currentUser.displayFirstName()}! </h3>`
 }
+
 function toggleMenu() {
   var menuDropdown = document.querySelector(".hamburger-button-dropbtn");
   menuOpen = !menuOpen;

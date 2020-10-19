@@ -1,6 +1,7 @@
+
 class RecipeRepository {
   constructor(recipeData) {
-    this.recipes = recipeRepository.recipes
+    this.recipes = recipeData
   }
 }
 
