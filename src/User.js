@@ -90,7 +90,7 @@ class User {
   }
 
   determineAmountNeeded(selectedRecipe) {
-      const result = this.pantry.reduce((acc, currentIngredient) => {
+      const neededIngredients = this.pantry.reduce((acc, currentIngredient) => {
         selectedRecipe.ingredients.find(ingredient => {
           if (ingredient.id === currentIngredient.ingredient) {
             if (ingredient.quantity.amount > currentIngredient.amount) {
@@ -102,11 +102,45 @@ class User {
         })
         return acc
       }, [])
-    return result
+    return neededIngredients
   }
 
   subtractIngredients(selectedRecipe) {
-  
+    let pantryToCheck = addIngredientsToPantry(selectedRecipe);
+    // INPUT: a selected recipe (an array of objects, with a property of 'ingredients': an array of objects)
+    // ADD the resulting amounts (for each in the array of NEEDED INGREDIENTS)
+    // to the amount of that ingredient in the user's pantry (so they have enough for the recipe)
+
+    // THEN (after a meal is cooked) SUBTRACT the amount of EACH ingredient called for in the recipe
+    // from the amount of that ingredient in the user's pantry
+    // RETURN the updated pantry (array of modified objects)
+
+  // We will ITERATE over the result (array of NEEDED INGREDIENTS) returned by ^determinAmountNeeded()^
+  // use .MAP() to return an array of the same lengthwise
+  // IF the ingredient ID in the recipe matches the ingredient ID in the pantry,
+  // subtract the amount from the result object from the amount in the pantry
+
+    pantryToCheck.map(ingredient => {
+
+    })
+
+  }
+
+
+  addIngredientsToPantry(selectedRecipe) {
+    let ingredientsToAdd = this.determineAmountNeeded(selectedRecipe);
+    let restockedPantry = this.pantry.map(ingredient => {
+
+      ingredientsToAdd.forEach(restockedIngredient => {
+        if (ingredient.ingredient === restockedIngredient.id) {
+          ingredient.amount += restockedIngredient.amountNeeded;
+          restockedIngredient.amountNeeded = 0;
+        }
+      })
+      return ingredient
+    })
+    this.pantry = restockedPantry;
+    return restockedPantry;
   }
 
 }

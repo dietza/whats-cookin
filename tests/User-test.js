@@ -897,12 +897,19 @@ describe('User', () => {
   it('should check if a user has ingredients for a recipe in their pantry', function() {
     let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
-    expect(user.checkPantryInventory(recipe).length).to.deep.equal(1);
+    expect(user.determineAmountNeeded(recipe).length).to.deep.equal(1);
   });
 
   it('should be able to check the pantry for ingredients of a different recipe', function() {
     let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[2];
-    expect(user.checkPantryInventory(recipe).length).to.deep.equal(0);
+    expect(user.determineAmountNeeded(recipe).length).to.deep.equal(0);
+  });
+
+  it('should add ingredients to the pantry', function() {
+    let user = new User(sampleUsers[0]);
+    let recipe = sampleRecipes[0];
+    let updatedPantry = user.addIngredientsToPantry(recipe);
+    expect(updatedPantry[27].amount).to.deep.equal(3);
   });
 });
