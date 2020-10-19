@@ -127,7 +127,7 @@ h1 {
       height: 100%;
       padding-top: 20px;
       align-items: center;
-      align-content: left; 
+      justify-content: left;
     }
 
     .sidebarwrap {
