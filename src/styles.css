@@ -4,7 +4,11 @@ body {
 }
 
 p {
+  display: flex;
+  align-items: center;
   font-size: 25px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   margin-top: 0;
   margin-bottom: 0;
 
@@ -91,14 +95,10 @@ h1 {
     }
 
     .welcome-bar {
-      grid-column: 1 / 1;
-      grid-row:  2;
-      display: flex;
-
     }
 
     .my-pantry {
-      grid-row: 2;
+
     }
 
     .l {
@@ -119,20 +119,30 @@ h1 {
         grid-template-rows: 1fr 1fr;
       }
 
-    .sidebarwrap {
-      grid-column: 1 / 2;
-      grid-row:  1 / 4;
-
-    }
-    .sidebar {
+    .user-specific-nav {
+      margin-top: 20px;
+      margin-left: 5px;
       display: flex;
       flex-direction: column;
       height: 100%;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      justify-content: center;
-      background-color: #007f5f
+      padding-top: 20px;
+      align-items: center;
+      align-content: left; 
     }
+
+    .sidebarwrap {
+      grid-column: 1 / 2;
+      grid-row:  1 / 4;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding-top: 20px;
+      align-items: center;
+      align-content: center;
+      background-color: #007f5f;
+      color: #FFF;
+    }
+
     .f {
      grid-column: 3 / 3;
      grid-row: 1;
