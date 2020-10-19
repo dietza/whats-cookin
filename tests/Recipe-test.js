@@ -1,24 +1,38 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const User = require('../src/User');
 const Recipe = require('../src/Recipe');
 
 const sampleIngredients = [{
-    "id": 20081,
-    "name": "wheat flour",
-    "estimatedCostInCents": 142
-  },
-  {
-    "id": 18372,
-    "name": "bicarbonate of soda",
-    "estimatedCostInCents": 582
-  },
-  {
-    "id": 1123,
-    "name": "eggs",
-    "estimatedCostInCents": 472
-  }];
+  "id": 20081,
+  "name": "wheat flour",
+  "estimatedCostInCents": 142
+},
+{
+  "id": 18372,
+  "name": "bicarbonate of soda",
+  "estimatedCostInCents": 582
+},
+{
+  "id": 1123,
+  "name": "eggs",
+  "estimatedCostInCents": 472
+},
+{
+  "id": 19206,
+  "name": "instant vanilla pudding",
+  "estimatedCostInCents": 660
+},
+{
+  "id": 1102047,
+  "name": "s&p",
+  "estimatedCostInCents": 524
+},
+{
+  "id": 6150,
+  "name": "bar b que sauce",
+  "estimatedCostInCents": 966
+}];
 
 const sampleUsers = [{
   "name": "Saige O'Kon",
@@ -738,6 +752,7 @@ const sampleRecipes = [{
 }];
 
 describe('Recipe', () => {
+
   it('should be a function', function() {
     let recipe = new Recipe(sampleRecipes[0]);
     expect(Recipe).to.be.a('function');
@@ -898,11 +913,10 @@ describe('Recipe', () => {
       "main dish",
       "dinner"
     ]);
-    console.log("this is the first test")
   });
 
   it("should be able to calculate the total cost of a recipe's ingredients", function() {
-    let recipe1 = new Recipe(sampleRecipes[0])
-    expect(recipe1.getCost(sampleRecipes[0], sampleIngredients)).to.equal(1562)
+    let recipe = new Recipe(sampleRecipes[0])
+    expect(recipe.getCost(sampleRecipes[0], sampleIngredients)).to.equal(1562)
   });
 });

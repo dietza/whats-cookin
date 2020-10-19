@@ -1,7 +1,8 @@
 class Pantry {
   constructor(pantry) {
-    this.ingredients = pantry.ingredients;
+    this.ingredients = pantry;
   }
+
 }
 
 if (typeof module !== 'undefined') {

@@ -43,7 +43,6 @@ class User {
   removeFromShoppingList(ingredient) {
     if (this.shoppingList.includes(ingredient)) {
       let target = this.shoppingList.find(selectedIngredient => {
-        console.log(ingredient);
         return selectedIngredient.id === ingredient.id
       });
       let targetIndex = this.shoppingList.indexOf(target);
@@ -90,7 +89,7 @@ class User {
   }
 
   determineAmountNeeded(selectedRecipe) {
-      const neededIngredients = this.pantry.reduce((acc, currentIngredient) => {
+      let neededIngredients = this.pantry.reduce((acc, currentIngredient) => {
         selectedRecipe.ingredients.find(ingredient => {
           if (ingredient.id === currentIngredient.ingredient) {
             if (ingredient.quantity.amount > currentIngredient.amount) {
@@ -101,47 +100,43 @@ class User {
           }
         })
         return acc
-      }, [])
-    console.log('CHECK ANY RECIPE/ NEEDED INGRDS : ', neededIngredients);
+      }, []);
+
+    neededIngredients.forEach(neededIngredient => {
+    this.shoppingList.push(neededIngredient);
+    });
     return neededIngredients
+  }
+
+  getCostOfNeededIngredients(selectedRecipe, ingredientsArr) {
+    let neededIngredients = this.determineAmountNeeded(selectedRecipe);
+    let result = neededIngredients.reduce((total, currentIngredient) => {
+        ingredientsArr.forEach(ingredient => {
+          if (ingredient.id === currentIngredient.id) {
+            return total += (ingredient.estimatedCostInCents * currentIngredient.amountNeeded);
+          }
+
+        })
+      return total
+    }, 0)
+    return result
   }
 
   subtractIngredientsFromPantry(selectedRecipe) {
     let restockedPantry = this.addIngredientsToPantry(selectedRecipe);
-    // INPUT: a selected recipe (an array of objects, with a property of 'ingredients': an array of objects)
-    // ADD the resulting amounts (for each in the array of NEEDED INGREDIENTS)
-    // to the amount of that ingredient in the user's pantry (so they have enough for the recipe)
-
-    // THEN (after a meal is cooked) SUBTRACT the amount of EACH ingredient called for in the recipe
-    // from the amount of that ingredient in the user's pantry
-    // RETURN the updated pantry (array of modified objects)
-
-  // We will ITERATE over the result (array of NEEDED INGREDIENTS) returned by ^determinAmountNeeded()^
-  // use .MAP() to return an array of the same lengthwise
-  // IF the ingredient ID in the recipe matches the ingredient ID in the pantry,
-  // subtract the amount from the result object from the amount in the pantry
-
     let depleatedPantry = restockedPantry.map(ingredient => {
-
-      console.log('subtractIngredients/ PANTRY INGREDIENT : ', ingredient);
-
-
       selectedRecipe.ingredients.forEach(usedIngredient => {
         if (selectedRecipe.ingredients.includes(usedIngredient)) {
           if (ingredient.ingredient === usedIngredient.id) {
             ingredient.amount -= usedIngredient.quantity.amount;
-            console.log('subtractIngredients/ USED INGREDIENT : ', usedIngredient);
           }
         }
       })
-      console.log('subtractIngredients/ AFTER USE INGREDIENT : ', ingredient);
       return ingredient;
     })
     this.pantry = depleatedPantry;
-    console.log('subtractIngredients/ DEPLEATED PANTRY : ', this.pantry);
     return depleatedPantry;
   }
-
 
   addIngredientsToPantry(selectedRecipe) {
     let ingredientsToAdd = this.determineAmountNeeded(selectedRecipe);
@@ -155,6 +150,7 @@ class User {
       return ingredient;
     })
     this.pantry = restockedPantry;
+    this.shoppingList = [];
     return restockedPantry;
   }
 

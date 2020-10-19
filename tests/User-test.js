@@ -17,6 +17,21 @@ const sampleIngredients = [{
   "id": 1123,
   "name": "eggs",
   "estimatedCostInCents": 472
+},
+{
+  "id": 19206,
+  "name": "instant vanilla pudding",
+  "estimatedCostInCents": 660
+},
+{
+  "id": 1102047,
+  "name": "s&p",
+  "estimatedCostInCents": 524
+},
+{
+  "id": 6150,
+  "name": "bar b que sauce",
+  "estimatedCostInCents": 966
 }];
 
 const sampleUsers = [{
@@ -913,155 +928,120 @@ const sampleRecipes = [{
 
 describe('User', () => {
 
+  beforeEach(() => {
+    user = new User(sampleUsers[0]);
+    user2 = new User(sampleUsers[1]);
+  });
+
   it('should be a function', function() {
-    let user = new User(sampleUsers[0]);
     expect(User).to.be.a('function');
   });
 
   it('should be an instance of the User class', function() {
-    let user = new User(sampleUsers[1]);
     expect(user).to.be.an.instanceof(User);
   });
 
   it('should have a name of our user', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    expect(user1.name).to.deep.equal("Saige O'Kon");
+    expect(user.name).to.deep.equal("Saige O'Kon");
     expect(user2.name).to.deep.equal("Ephraim Goyette");
   });
 
   it('should have an user ID', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    expect(user1.id).to.deep.equal(1);
+    expect(user.id).to.deep.equal(1);
     expect(user2.id).to.deep.equal(2);
   });
 
   it('should have a user pantry which stores ingredients', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    expect(user1.pantry).to.be.a('array');
+    expect(user.pantry).to.be.a('array');
     expect(user2.pantry[0].ingredient).to.deep.equal(6150);
   });
 
   it('should have a list of favorite recipes', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    expect(user1.favorites).to.deep.equal([]);
+    expect(user.favorites).to.deep.equal([]);
   });
 
   it('should have a list of recipes to cook', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     expect(user2.recipesToCook).to.deep.equal([]);
   });
 
   it('should have a shopping list', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
-    expect(user1.shoppingList).to.deep.equal([]);
+    expect(user.shoppingList).to.deep.equal([]);
   });
 
   it('should add recipes to the list of favorites', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe = sampleRecipes[0];
-    user1.addToFavorites(recipe);
-    expect(user1.favorites.includes(recipe)).to.deep.equal(true);
+    user.addToFavorites(recipe);
+    expect(user.favorites.includes(recipe)).to.deep.equal(true);
   });
 
   it('should be able to remove recipes from the list of favorites', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe = sampleRecipes[0];
     user2.addToFavorites(recipe);
-    console.log(user2.favorites);
     user2.removeFromFavorites(recipe);
     expect(user2.favorites.includes(recipe)).to.deep.equal(false);
   });
 
   it('should add recipes to the list of recipes to cook', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe = sampleRecipes[0];
-    user1.addToRecipesToCook(recipe);
-    expect(user1.recipesToCook.includes(recipe)).to.deep.equal(true);
+    user.addToRecipesToCook(recipe);
+    expect(user.recipesToCook.includes(recipe)).to.deep.equal(true);
   });
 
   it('should be able to remove recipes from the list of recipes to cook', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe = sampleRecipes[0];
     user2.addToRecipesToCook(recipe);
-    console.log(user2.favorites);
     user2.removeFromRecipesToCook(recipe);
     expect(user2.recipesToCook.includes(recipe)).to.deep.equal(false);
   });
 
   it('should add ingredients to the shopping list', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let ingredient = sampleIngredients[0];
-    user1.addToShoppingList(ingredient);
-    console.log('addToShoppingList test (ingredient) ==>', ingredient);
-    expect(user1.shoppingList.includes(ingredient)).to.deep.equal(true);
+    user.addToShoppingList(ingredient);
+    expect(user.shoppingList.includes(ingredient)).to.deep.equal(true);
   });
 
   it('should remove ingredients from the shopping list', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let ingredient = sampleIngredients[1];
     user2.addToShoppingList(ingredient);
-    console.log('removeFromShoppingList test (ingredient) ==>', ingredient);
-    console.log(user2.shoppingList);
     user2.removeFromShoppingList(ingredient);
     expect(user2.shoppingList.includes(ingredient)).to.deep.equal(false);
   });
 
   it('should search for and return a recipe by type from the list of favorites', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe1 = sampleRecipes[0];
     let recipe2 = sampleRecipes[1];
     let recipe3 = sampleRecipes[2];
-    user1.addToFavorites(recipe1);
-    user1.addToFavorites(recipe2);
-    user1.addToFavorites(recipe3);
-    expect(user1.searchRecipes('favorites', 'snack')).to.deep.equal([recipe1]);
+    user.addToFavorites(recipe1);
+    user.addToFavorites(recipe2);
+    user.addToFavorites(recipe3);
+    expect(user.searchRecipes('favorites', 'snack')).to.deep.equal([recipe1]);
   });
 
   it('should search for and return a recipe by type from the list of recipes to cook', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe1 = sampleRecipes[0];
     let recipe2 = sampleRecipes[1];
     let recipe3 = sampleRecipes[2];
     user2.addToRecipesToCook(recipe1);
     user2.addToRecipesToCook(recipe2);
     user2.addToRecipesToCook(recipe3);
-    console.log('addToRecipesToCook test (recipesToCook) ==>', user2.recipesToCook);
     expect(user2.searchRecipes('recipesToCook', 'sauce')).to.deep.equal([recipe3]);
   });
 
   it('should search for saved recipes by name', function() {
-    let user1 = new User(sampleUsers[0]);
-    let user2 = new User(sampleUsers[1]);
     let recipe1 = sampleRecipes[0];
     let recipe2 = sampleRecipes[1];
     let recipe3 = sampleRecipes[2];
-    user1.addToRecipesToCook(recipe1);
-    user1.addToFavorites(recipe2);
-    user1.addToRecipesToCook(recipe3);
-    expect(user1.searchRecipes('recipesToCook', "Loaded Chocolate Chip Pudding Cookie Cups")).to.deep.equal([recipe1]);
+    user.addToRecipesToCook(recipe1);
+    user.addToFavorites(recipe2);
+    user.addToRecipesToCook(recipe3);
+    expect(user.searchRecipes('recipesToCook', "Loaded Chocolate Chip Pudding Cookie Cups")).to.deep.equal([recipe1]);
   });
 
   it('should search recipes by ingredient', function() {
-    let user = new User(sampleUsers[0])
     expect(user.searchRecipesByIngredient(sampleRecipes, 'bicarbonate of soda', sampleIngredients)).to.deep.equal([sampleRecipes[0]]);
   });
 
   it('should filter saved recipes by ingredient', function() {
-    let user = new User(sampleUsers[0]);
     user.addToRecipesToCook(sampleRecipes[0]);
     user.addToRecipesToCook(sampleRecipes[1]);
     user.addToRecipesToCook(sampleRecipes[2]);
@@ -1069,7 +1049,6 @@ describe('User', () => {
   });
 
   it('should check if a user has ingredients for a recipe in their pantry', function() {
-    let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
     expect(user.determineAmountNeeded(recipe)).to.deep.equal([{
       "id": 19206,
@@ -1081,31 +1060,39 @@ describe('User', () => {
     }]);
   });
 
-  it('should be able to check the pantry for ingredients of a different recipe', function() {
-    let user = new User(sampleUsers[0]);
+  it('should be able to check the pantry for ingredients needed for different recipe', function() {
     let recipe = sampleRecipes[2];
     expect(user.determineAmountNeeded(recipe).length).to.deep.equal(0);
   });
 
-  it('should be able to check the pantry for ingredients of a any recipe', function() {
-    let user = new User(sampleUsers[0]);
+  it('should be able to check the pantry for ingredients needed for any recipe', function() {
     let recipe = sampleRecipes[3];
     let neededIngredients = user.determineAmountNeeded(recipe);
     expect(neededIngredients[0].amountNeeded).to.deep.equal(6);
   });
 
+  it('should calculate the cost of ingredients by amount needed for a recipe', function() {
+    let recipe = sampleRecipes[0];
+    let totalCost = user.getCostOfNeededIngredients(recipe, sampleIngredients)
+    expect(totalCost).to.deep.equal(660);
+  });
+
   it('should add ingredients to the pantry as needed for a given recipe', function() {
-    let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
     let updatedPantry = user.addIngredientsToPantry(recipe);
     expect(updatedPantry[27].amount).to.deep.equal(3);
   });
 
   it('should remove ingredients from the pantry after a recipe is cooked', function() {
-    let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
     let updatedPantry = user.subtractIngredientsFromPantry(recipe);
     expect(updatedPantry.length).to.deep.equal(36);
     expect(updatedPantry[27].amount).to.deep.equal(0);
+  });
+
+  it('should calculate the cost of ingredients by amount needed for another recipe', function() {
+    let recipe = sampleRecipes[3];
+    let totalCost = user.getCostOfNeededIngredients(recipe, sampleIngredients)
+    expect(totalCost).to.deep.equal(3144);
   });
 });
