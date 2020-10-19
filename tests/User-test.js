@@ -735,6 +735,180 @@ const sampleRecipes = [{
 "tags": [
   "sauce"
 ]
+},
+{
+  "id": 226562,
+  "image": "https://spoonacular.com/recipeImages/226562-556x370.jpg",
+  "ingredients": [
+    {
+      "id": 9019,
+      "quantity": {
+        "amount": 2,
+        "unit": "tablespoons"
+      }
+    },
+    {
+      "id": 18079,
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 16069,
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 19334,
+      "quantity": {
+        "amount": 2,
+        "unit": "tablespoons"
+      }
+    },
+    {
+      "id": 11124,
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 2009,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "teaspoon"
+      }
+    },
+    {
+      "id": 9079,
+      "quantity": {
+        "amount": 0.3333333333333333,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 11165,
+      "quantity": {
+        "amount": 0.25,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 11215,
+      "quantity": {
+        "amount": 3,
+        "unit": ""
+      }
+    },
+    {
+      "id": 1002014,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "teaspoon"
+      }
+    },
+    {
+      "id": 2042,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "teaspoon"
+      }
+    },
+    {
+      "id": 11935,
+      "quantity": {
+        "amount": 2,
+        "unit": "tablespoons"
+      }
+    },
+    {
+      "id": 4053,
+      "quantity": {
+        "amount": 2,
+        "unit": "tablespoon"
+      }
+    },
+    {
+      "id": 11282,
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 12151,
+      "quantity": {
+        "amount": 0.5,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 11821,
+      "quantity": {
+        "amount": 1,
+        "unit": "cup"
+      }
+    },
+    {
+      "id": 1102047,
+      "quantity": {
+        "amount": 8,
+        "unit": "servings"
+      }
+    },
+    {
+      "id": 6615,
+      "quantity": {
+        "amount": 3,
+        "unit": "cups"
+      }
+    }
+  ],
+  "instructions": [
+    {
+      "instruction": "Wash the lentils and place into a pot along with the vegetable broth. Bring to a boil, then reduce heat to medium-low and simmer, for about 40 minutes.",
+      "number": 1
+    },
+    {
+      "instruction": "Add more broth or water if necessary",
+      "number": 2
+    },
+    {
+      "instruction": "Meanwhile, warm the oil in a pan.",
+      "number": 3
+    },
+    {
+      "instruction": "Add the onions and cook for about 4 minutes or until soft.",
+      "number": 4
+    },
+    {
+      "instruction": "Add the carrots, bell pepper and garlic. Cook for about 3 minutes more. Set aside.When the lentils are ready mash them slightly with a potato masher or a fork.Preheat the oven to 350\u00ba F.In a large bowl, mix the onion mixture, mashed lentils, apple sauce, cranberries, pistachios, bread crumbs, cilantro, chili powder, cumin, thyme, salt and pepper.Line a loaf pan with parchment paper.",
+      "number": 5
+    },
+    {
+      "instruction": "Transfer the mixture to the loaf pan and press mixture into the pan with a spoon.",
+      "number": 6
+    },
+    {
+      "instruction": "Mix the glaze ingredients in a small bowl and spread evenly over the top.",
+      "number": 7
+    },
+    {
+      "instruction": "Bake for about 45 minutes.",
+      "number": 8
+    },
+    {
+      "instruction": "Transfer the pan to a wire rack and let the loaf cool a bit. Run a table knife around the edge of the pan and turn the loaf out onto a serving plate.",
+      "number": 9
+    }
+  ],
+  "name": "Vegan Lentil Loaf",
+  "tags": [
+    "side dish"
+  ]
 }];
 
 describe('User', () => {
@@ -897,7 +1071,14 @@ describe('User', () => {
   it('should check if a user has ingredients for a recipe in their pantry', function() {
     let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
-    expect(user.determineAmountNeeded(recipe).length).to.deep.equal(1);
+    expect(user.determineAmountNeeded(recipe)).to.deep.equal([{
+      "id": 19206,
+      "quantity": {
+        "amount": 3,
+        "unit": "Tbsp"
+      },
+      "amountNeeded": 1
+    }]);
   });
 
   it('should be able to check the pantry for ingredients of a different recipe', function() {
@@ -906,10 +1087,22 @@ describe('User', () => {
     expect(user.determineAmountNeeded(recipe).length).to.deep.equal(0);
   });
 
-  it('should add ingredients to the pantry', function() {
+  it('should be able to check the pantry for ingredients of a any recipe', function() {
+    let user = new User(sampleUsers[0]);
+    let recipe = sampleRecipes[3];
+    let neededIngredients = user.determineAmountNeeded(recipe);
+    expect(neededIngredients[0].amountNeeded).to.deep.equal(6);
+  });
+
+  it('should add ingredients to the pantry as needed for a given recipe', function() {
     let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
     let updatedPantry = user.addIngredientsToPantry(recipe);
     expect(updatedPantry[27].amount).to.deep.equal(3);
+  });
+
+  it('should remove ingredients from the pantry after a recipe is cooked', function() {
+    let user = new User(sampleUsers[0]);
+    let recipe = sampleRecipes[0];
   });
 });

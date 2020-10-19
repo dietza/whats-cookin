@@ -102,11 +102,12 @@ class User {
         })
         return acc
       }, [])
+    console.log('CHECK ANY RECIPE/ NEEDED INGRDS : ', neededIngredients);
     return neededIngredients
   }
 
   subtractIngredients(selectedRecipe) {
-    let pantryToCheck = addIngredientsToPantry(selectedRecipe);
+    let restockedPantry = addIngredientsToPantry(selectedRecipe);
     // INPUT: a selected recipe (an array of objects, with a property of 'ingredients': an array of objects)
     // ADD the resulting amounts (for each in the array of NEEDED INGREDIENTS)
     // to the amount of that ingredient in the user's pantry (so they have enough for the recipe)
@@ -120,7 +121,7 @@ class User {
   // IF the ingredient ID in the recipe matches the ingredient ID in the pantry,
   // subtract the amount from the result object from the amount in the pantry
 
-    pantryToCheck.map(ingredient => {
+    restockedPantry.map(ingredient => {
 
     })
 
