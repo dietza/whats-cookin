@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const Recipe = require('../src/Recipe');
+const Pantry = require('../src/Pantry');// const Ingredient = require('../src/Ingredients');
 
 const sampleIngredients = [{
   "id": 20081,
@@ -183,7 +183,8 @@ const sampleUsers = [{
       "amount": 2
     }
   ]
-}, {
+},
+{
   "name": "Ephraim Goyette",
   "id": 2,
   "pantry": [
@@ -540,7 +541,7 @@ const sampleRecipes = [{
     "hor d'oeuvre"
   ]
 },
-  {
+{
   "id": 678353,
   "image": "https://spoonacular.com/recipeImages/678353-556x370.jpg",
   "ingredients": [
@@ -642,8 +643,7 @@ const sampleRecipes = [{
     "main dish",
     "dinner"
   ]
-},
-  {
+}, {
   "id": 412309,
   "image": "https://spoonacular.com/recipeImages/412309-556x370.jpeg",
   "ingredients": [
@@ -751,172 +751,20 @@ const sampleRecipes = [{
   ]
 }];
 
-describe('Recipe', () => {
+describe('Pantry', () => {
 
   it('should be a function', function() {
-    let recipe = new Recipe(sampleRecipes[0]);
-    expect(Recipe).to.be.a('function');
+    let pantry = new Pantry(sampleUsers[0].pantry);
+    expect(Pantry).to.be.a('function');
   });
 
-  it('should be an instance of the User class', function() {
-    let recipe = new Recipe(sampleRecipes[1]);
-    expect(recipe).to.be.an.instanceof(Recipe);
+  it('should be an instance of the Pantry class', function() {
+    let pantry = new Pantry(sampleUsers[1].pantry);
+    expect(pantry).to.be.an.instanceof(Pantry);
   });
 
-  it('should have an id number', function() {
-    let recipe = new Recipe(sampleRecipes[2]);
-    expect(recipe.id).to.deep.equal(412309);
-  });
-
-  it('should have a name', function() {
-    let recipe = new Recipe(sampleRecipes[0]);
-    expect(recipe.name).to.deep.equal("Loaded Chocolate Chip Pudding Cookie Cups");
-  });
-
-  it('should have an associated image', function() {
-    let recipe = new Recipe(sampleRecipes[1]);
-    expect(recipe.image).to.deep.equal("https://spoonacular.com/recipeImages/678353-556x370.jpg");
-  });
-
-  it('should have a list of ingredients', function() {
-    let recipe = new Recipe(sampleRecipes[2]);
-    expect(recipe.ingredients).to.deep.equal([
-      {
-        "id": 1002030,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      },
-      {
-        "id": 19334,
-        "quantity": {
-          "amount": 8,
-          "unit": "tablespoons"
-        }
-      },
-      {
-        "id": 1001,
-        "quantity": {
-          "amount": 2,
-          "unit": "cups"
-        }
-      },
-      {
-        "id": 4582,
-        "quantity": {
-          "amount": 4,
-          "unit": "servings"
-        }
-      },
-      {
-        "id": 2031,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      },
-      {
-        "id": 5100,
-        "quantity": {
-          "amount": 1,
-          "unit": "pound"
-        }
-      },
-      {
-        "id": 2009,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      },
-      {
-        "id": 1022020,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      },
-      {
-        "id": 6168,
-        "quantity": {
-          "amount": 8,
-          "unit": "cups"
-        }
-      },
-      {
-        "id": 9176,
-        "quantity": {
-          "amount": 0.5,
-          "unit": "cup"
-        }
-      },
-      {
-        "id": 2026,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      },
-      {
-        "id": 1042047,
-        "quantity": {
-          "amount": 1.5,
-          "unit": "tablespoons"
-        }
-      },
-      {
-        "id": 1042047,
-        "quantity": {
-          "amount": 4,
-          "unit": "teaspoons"
-        }
-      }
-    ]);
-  });
-
-  it('should have a list of instructions', function() {
-    let recipe = new Recipe(sampleRecipes[0]);
-    expect(recipe.instructions).to.deep.equal([
-      {
-        "instruction": "In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy.",
-        "number": 1
-      },
-      {
-        "instruction": "Add egg and vanilla and mix until combined.",
-        "number": 2
-      },
-      {
-        "instruction": "Add dry ingredients and mix on low just until incorporated. Stir in chocolate chips.Scoop the dough into 1,5 tablespoon size balls and place on a plate or sheet. Cover with saran wrap and chill at least 2 hours or overnight.When ready to bake, preheat oven to 350 degrees.",
-        "number": 3
-      },
-      {
-        "instruction": "Place the cookie dough balls into ungreased muffin pan. Sprinkle with sea salt.",
-        "number": 4
-      },
-      {
-        "instruction": "Bake for 9 to 10 minutes, or until you see the edges start to brown.",
-        "number": 5
-      },
-      {
-        "instruction": "Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.",
-        "number": 6
-      }
-    ]);
-  });
-
-  it('should have a list of category tags', function() {
-    let recipe = new Recipe(sampleRecipes[1]);
-    expect(recipe.tags).to.deep.equal([
-      "lunch",
-      "main course",
-      "main dish",
-      "dinner"
-    ]);
-  });
-
-  it("should be able to calculate the total cost of a recipe's ingredients", function() {
-    let recipe = new Recipe(sampleRecipes[0])
-    expect(recipe.getCost(sampleRecipes[0], sampleIngredients)).to.equal(1562)
+  it('should know which ingredients are in the pantry', function() {
+    let pantry = new Pantry(sampleUsers[0].pantry);
+    expect(pantry.ingredients[2]).to.deep.equal({ ingredient: 1082047, amount: 10 });
   });
 });

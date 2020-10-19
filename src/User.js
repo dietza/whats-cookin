@@ -43,7 +43,6 @@ class User {
   removeFromShoppingList(ingredient) {
     if (this.shoppingList.includes(ingredient)) {
       let target = this.shoppingList.find(selectedIngredient => {
-        console.log(ingredient);
         return selectedIngredient.id === ingredient.id
       });
       let targetIndex = this.shoppingList.indexOf(target);
@@ -51,31 +50,112 @@ class User {
     };
   }
 
-  // searchFavorites(type) {
-  //   const result = this.favorites.filter(favRecipe => {
-  //
-  //     // IF the searchTerm is a recipeType,
-  //     // then return all recipes whose tags include the searchTerm,
-  //     // IF the searchTerm is a recipeName,
-  //     // then return the recipe whose name matches the searchTerm,
-  //     // IF the searchTerm is an ingredient,
-  //     // then return all recipes which include ingredients with a matching ID number to the searchTerm.
-  //
-  //     return favRecipe.tags.includes(type);
-  //   })
-  //   return result;
-  // }
-
   searchRecipes(locationToCheck, keyword) {
     const result = this[locationToCheck].filter(recipe => {
-      return recipe.tags.includes(keyword) || recipe.name.includes(keyword)
-      // || recipe.name.includes(keyword)
-      ;
+      return recipe.tags.includes(keyword) || recipe.name.includes(keyword);
     });
-    console.log('searchRecipes (filter result) ==>', result);
     return result;
   }
+
+  searchSavedRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr)
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+          if (ingredient.id === ingredientID){
+            recipeList.push(currentRecipe)
+          };
+      });
+      return recipeList;
+    }, []);
+    return result
+  }
+
+  searchRecipesByIngredient(locationToCheck, keyword, ingredientsArr) {
+    let ingredientID = this.nameToNum(keyword, ingredientsArr);
+    const result = locationToCheck.reduce((recipeList, currentRecipe) => {
+      currentRecipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientID) {
+          recipeList.push(currentRecipe)
+        };
+      });
+        return recipeList;
+      }, []);
+    return result;
+  }
+
+  nameToNum(ingredientName, ingredientsArr) {
+    let ingredient = ingredientsArr.find(ingredient => ingredient.name === ingredientName)
+    return ingredient.id;
+  }
+
+  determineAmountNeeded(selectedRecipe) {
+      let neededIngredients = this.pantry.reduce((acc, currentIngredient) => {
+        selectedRecipe.ingredients.find(ingredient => {
+          if (ingredient.id === currentIngredient.ingredient) {
+            if (ingredient.quantity.amount > currentIngredient.amount) {
+            let amountNeeded = ingredient.quantity.amount - currentIngredient.amount;
+            ingredient.amountNeeded = amountNeeded;
+            return acc.push(ingredient);
+            }
+          }
+        })
+        return acc
+      }, []);
+
+    neededIngredients.forEach(neededIngredient => {
+    this.shoppingList.push(neededIngredient);
+    });
+    return neededIngredients
+  }
+
+  getCostOfNeededIngredients(selectedRecipe, ingredientsArr) {
+    let neededIngredients = this.determineAmountNeeded(selectedRecipe);
+    let result = neededIngredients.reduce((total, currentIngredient) => {
+        ingredientsArr.forEach(ingredient => {
+          if (ingredient.id === currentIngredient.id) {
+            return total += (ingredient.estimatedCostInCents * currentIngredient.amountNeeded);
+          }
+
+        })
+      return total
+    }, 0)
+    return result
+  }
+
+  subtractIngredientsFromPantry(selectedRecipe) {
+    let restockedPantry = this.addIngredientsToPantry(selectedRecipe);
+    let depleatedPantry = restockedPantry.map(ingredient => {
+      selectedRecipe.ingredients.forEach(usedIngredient => {
+        if (selectedRecipe.ingredients.includes(usedIngredient)) {
+          if (ingredient.ingredient === usedIngredient.id) {
+            ingredient.amount -= usedIngredient.quantity.amount;
+          }
+        }
+      })
+      return ingredient;
+    })
+    this.pantry = depleatedPantry;
+    return depleatedPantry;
+  }
+
+  addIngredientsToPantry(selectedRecipe) {
+    let ingredientsToAdd = this.determineAmountNeeded(selectedRecipe);
+    let restockedPantry = this.pantry.map(ingredient => {
+      ingredientsToAdd.forEach(restockedIngredient => {
+        if (ingredient.ingredient === restockedIngredient.id) {
+          ingredient.amount += restockedIngredient.amountNeeded;
+          restockedIngredient.amountNeeded = 0;
+        }
+      })
+      return ingredient;
+    })
+    this.pantry = restockedPantry;
+    this.shoppingList = [];
+    return restockedPantry;
+  }
+
 }
 
-
-module.exports = User;
+if (typeof module !== 'undefined') {
+  module.exports = User;
+}

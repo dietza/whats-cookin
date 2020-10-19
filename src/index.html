@@ -2,10 +2,52 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+        integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+        crossorigin="anonymous"
+      />
     <title>Whats Cookin</title>
   </head>
   <body>
-    <h1>Whats Cookin</h1>
+    <div class="wrapper">
+      <div class="box a navbar">
+          <button class="hamburger-button dropbtn">
+            <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
+          </button>
+                        <div class="dropdown-content" style="left:0;">
+                          <a href="#">My Pantry</a>
+                          <a href="#">My Favorite Recipes</a>
+                          <a href="#">Recipes to Cook</a>
+                        </div>
+            <div class="search-bar">
+              <form action="/action_page.php">
+                  <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+            <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+      </div>
+
+        <div class="box b">
+          <div class="welcome-bar">Welcome User</div>
+          <div class="box l">All Recipes</div>
+        </div>
+
+        <div class="box d">
+        <div class="box f">Recipe1</div>
+        <div class="box g">Recipe2</div>
+        <div class="box h">Recipe3</div>
+        <div class="box i">Recipe6</div>
+        <div class="box j">Recipe1</div>
+        <div class="box k">Recipe3</div>
+      </div>
+      <div class="box e">Footer / TBD</div>
+    </div>
 
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/recipes.js"></script>
