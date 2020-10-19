@@ -34,11 +34,12 @@ body {
     }
 
     .navbar a {
-      float: left;
       padding: 12px;
       color: white;
       text-decoration: none;
       font-size: 17px;
+      display: flex;
+      justify-content: space-between;
     }
 
     .navbar a:hover {
@@ -55,7 +56,7 @@ body {
       border: none;
       border-radius: 5px;
       background-color: none;
-
+      align-items: center;
     }
 
     .hamburger-menu-icon {
@@ -65,12 +66,14 @@ body {
 
     .search-bar {
       display: flex;
+      padding-left: 25px;
       flex-direction: row;
       align-items: flex-start;
     }
 
     .search-input {
-      width: 80px;
+      width: 250px;
+      height: 30px;
     }
 
     .b {
@@ -85,7 +88,7 @@ body {
       grid-column: 1 / 1;
       grid-row:  1;
       display: flex;
-      justify-content: center;
+      justify-content: left;
       align-items: center;
     }
 
@@ -159,6 +162,11 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .l {
+      display: flex;
+      justify-content: center;
+      text-align: center;
     }
 
     .dropbtn {
