@@ -153,7 +153,12 @@ class User {
     this.shoppingList = [];
     return restockedPantry;
   }
-
+  displayFirstName() {
+    let nameArray = this.name.split(' ')
+    const [firstName, lastName] = nameArray
+    return firstName
+  }
+}
 }
 
 if (typeof module !== 'undefined') {

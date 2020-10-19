@@ -1,3 +1,7 @@
+
+
+
+
 // ************GLOBAL VARIABLES***************//
 let currentUser
 let currentRecipeRepository
@@ -13,6 +17,12 @@ let searchForm = document.querySelector("searchForm");
 let searchInput = document.querySelector("search-input");
 let showPantryRecipes = document.querySelector(".show-pantry-recipes-btn");
 menuOpen = false;
+
+// ************EVENT LISTENERS***************//
+window.addEventListener('load', function () {
+ uploadData()
+ displayFirstName())
+})
 
 // ************EVENT HANDLERS****************//
 
@@ -33,6 +43,11 @@ function getRandomIndex(array) {
 
 //*****************DISPLAY****************//
 
+function displayUserData() {
+  userName.innerHTML =
+  <h3>Hello, ${currentUser.displayFirstName()}!</h3>
+
+}
 function toggleMenu() {
   var menuDropdown = document.querySelector(".hamburger-button-dropbtn");
   menuOpen = !menuOpen;
