@@ -90,20 +90,15 @@ h1 {
       height: 30px;
     }
 
-    .b {
-        grid-column: 4 / 3;
-        grid-row: 1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
-    }
-
     .welcome-bar {
       grid-column: 1 / 1;
-      grid-row:  1;
+      grid-row:  2;
       display: flex;
-      justify-content: left;
-      align-items: center;
+
+    }
+
+    .my-pantry {
+      grid-row: 2;
     }
 
     .l {
@@ -112,78 +107,87 @@ h1 {
     }
 
     .c {
-        grid-column: 2;
+      grid-column: 2;
     }
 
     .d {
-        grid-column: 2 /  4 ;
-        grid-row: 2;
-        display: grid;
-          grid-gap: 10px;
-          grid-template-columns: repeat(3, 33%);
-          grid-template-rows: 1fr 1fr;
+      grid-column: 2 /  4 ;
+      grid-row: 2;
+      display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(3, 33%);
+        grid-template-rows: 1fr 1fr;
       }
 
-    .sidebar {
-        grid-column: 1 / 2;
-        grid-row:  1 / 4;
-    }
+    .sidebarwrap {
+      grid-column: 1 / 2;
+      grid-row:  1 / 4;
 
+    }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      justify-content: center;
+      background-color: #007f5f
+    }
     .f {
-       grid-column: 3 / 3;
-       grid-row: 1;
-           display: flex;
-           justify-content: center;
-           align-items: center;
+     grid-column: 3 / 3;
+     grid-row: 1;
+         display: flex;
+         justify-content: center;
+         align-items: center;
     }
 
     .g {
-       grid-column: 2 / 1;
-       grid-row:  2 / 2;
-       display: flex;
-       justify-content: center;
-       align-items: center;
+     grid-column: 2 / 1;
+     grid-row:  2 / 2;
+     display: flex;
+     justify-content: center;
+     align-items: center;
     }
 
     .h {
-      grid-column:  2 / 2;
-      grid-row: row 2 / 2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    grid-column:  2 / 2;
+    grid-row: row 2 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 
     .i {
-      grid-column: 3 / 3;
-      grid-row: 2 / 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    grid-column: 3 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 
     .j {
-      grid-column: 2 / 3;
-      grid-row: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    grid-column: 2 / 3;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     }
 
     .k {
-      grid-column: 1 / 2;
-      grid-row: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    grid-column: 1 / 2;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     }
 
     .l {
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      flex-direction: column;
-    }
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+  }
 
     .dropbtn {
       background-color: #4CAF50;

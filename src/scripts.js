@@ -46,7 +46,7 @@ function getRandomIndex(array) {
 function displayUserData() {
   let currentFirstName = currentUser.displayFirstName()
   document.querySelector('.welcome-bar').innerHTML =
-  `<h3> Hello, ${currentUser.displayFirstName()}! </h3>`
+  `<h1> ${currentUser.displayFirstName()}! </h1>`
 }
 
 function toggleMenu() {
