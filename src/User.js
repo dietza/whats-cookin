@@ -1,10 +1,10 @@
 class User {
-  constructor(user) {
+  constructor(user, pantry, ingredients) {
     this.name = user.name;
     this.id = user.id;
     this.favorites = [];
     this.recipesToCook = [];
-    this.pantry = user.pantry;
+    this.pantry = pantry || new Pantry()
     this.shoppingList = []
   }
 
@@ -154,7 +154,13 @@ class User {
     return restockedPantry;
   }
 
+  displayFirstName() {
+    let nameArray = this.name.split(' ')
+    const [firstName, lastName] = nameArray
+    return firstName
+  }
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = User;
