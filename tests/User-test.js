@@ -1104,5 +1104,8 @@ describe('User', () => {
   it('should remove ingredients from the pantry after a recipe is cooked', function() {
     let user = new User(sampleUsers[0]);
     let recipe = sampleRecipes[0];
+    let updatedPantry = user.subtractIngredientsFromPantry(recipe);
+    expect(updatedPantry.length).to.deep.equal(36);
+    expect(updatedPantry[27].amount).to.deep.equal(0);
   });
 });
