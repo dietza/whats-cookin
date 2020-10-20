@@ -25,58 +25,67 @@
   <body>
     <div class="wrapper">
 
-      <div class="box a navbar">
+        <div class="box navbar header-nav">
 
-          <!-- <button class="hamburger-button-dropbtn">
-            <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
-          </button>
-                    <div class="dropdown-content" style="left:0;">
-                      <a href="#">My Pantry</a>
-                      <a href="#">My Favorite Recipes</a>
-                      <a href="#">Recipes to Cook</a>
-                    </div> -->
+            <!-- <button class="hamburger-button-dropbtn">
+              <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
+            </button>
+                      <div class="dropdown-content" style="left:0;">
+                        <a href="#">My Pantry</a>
+                        <a href="#">My Favorite Recipes</a>
+                        <a href="#">Recipes to Cook</a>
+                      </div> -->
 
-        <div class="search-bar">
-          <form class="search-form" action="/action_page.php">
-              <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
-              <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
+          <div class="search-bar">
+            <form class="search-form" action="/action_page.php">
+                <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
+                <button type="submit"><i class="fa fa-search submit-search-button"></i></button>
+            </form>
+          </div>
+
+          <div class="nav-anchor">
+            <a href="#" name="all-recipes-button">
+              <div class="all-recipes-button">
+                <p>All</p> <p>Recipes</p></div>
+            </a>
+          </div>
+          <div class="nav-anchor">
+            <a href="#"><i class="fa fa-fw fa-user"></i><p>Login</p></a>
+          </div>
+
         </div>
-        <button class="display-all-recipes-button">All recipes</button>
-        <a href="#"><i class="fa fa-fw fa-user"></i><p>Login</p></a>
-      </div>
 
-        <div class="box l">
-          <p>Viewing:</p>
-          <h1>All Recipes</h1>
+          <div class="box current-view-title">
+            <p>Viewing :</p>
+            <h1>All Recipes</h1>
+          </div>
+
+        <div class="box main-recipe-display">
+          <div class="card-1 recipe-card">Recipe1</div>
+          <div class="card-2 recipe-card">Recipe2</div>
+          <div class="card-3 recipe-card">Recipe3</div>
+          <div class="card-4 recipe-card">Recipe4</div>
+          <div class="card-5 recipe-card">Recipe5</div>
+          <div class="card-6 recipe-card">Recipe6</div>
         </div>
 
-      <div class="box d">
-        <div class="box f">Recipe1</div>
-        <div class="box g">Recipe2</div>
-        <div class="box h">Recipe3</div>
-        <div class="box i">Recipe4</div>
-        <div class="box j">Recipe5</div>
-        <div class="box k">Recipe6</div>
-      </div>
-
-      <div class=sidebarwrap>
+      <div class="box sidebarwrap">
         <div class="welcome-bar">
           <h1>Welcome,</h1>
             <h1>User</h1>
         </div>
         <div class="user-specific-nav">
-          <div class="my-pantry">
-            <p>My Pantry</p>
+          <div class="my-pantry user-link">
+            <a href="#"><p>My Pantry</p></a>
           </div>
-          <div class="my-favorites">
-            <p>My Favorite Recipes</p>
+          <div class="my-favorites user-link">
+            <a href="#"><p>My Favorite Recipes</p></a>
           </div>
-          <div class="to-cook">
-            <p>My To-Cook List</p>
+          <div class="to-cook user-link">
+            <a href="#"><p>My Recipes <br> To Cook</p></a>
           </div>
-          <div class="all-recipes">
-            <p>All Recipes</p>
+          <div class="cooked-recipes user-link">
+            <a href="#"><p>My Cooked Recipes</p></a>
           </div>
         </div>
       </div>
