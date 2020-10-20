@@ -931,6 +931,10 @@ describe('User', () => {
   beforeEach(() => {
     user = new User(sampleUsers[0]);
     user2 = new User(sampleUsers[1]);
+
+    // MOVE SAMPLE DATA SETS INTO THE BEFORE EACH
+    // TO RESOLVE MUTATION OF DATA
+
   });
 
   it('should be a function', function() {
