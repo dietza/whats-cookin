@@ -4,8 +4,8 @@ class User {
     this.id = user.id;
     this.favorites = [];
     this.recipesToCook = [];
-    this.pantry = user.pantry || pantry || new Pantry(user);
-    this.shoppingList = []
+    this.pantry = user.pantry;
+    this.shoppingList = [];
   }
 
   addToFavorites(recipe) {

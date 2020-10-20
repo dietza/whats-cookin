@@ -57,7 +57,7 @@ function displayUserData() {
   let currentFirstName = currentUser.displayFirstName()
   document.querySelector('.welcome-bar').innerHTML =
   `<h1>Welcome,</h1>
-  <h1> ${currentUser.displayFirstName()}! </h1>`
+  <h3> ${currentUser.displayFirstName()}! </h3>`
 }
 
 // function toggleMenu() {
