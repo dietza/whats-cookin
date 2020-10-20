@@ -25,7 +25,7 @@
   <body>
     <div class="wrapper">
 
-        <div class="box navbar header-nav">
+        <div class="box navbar header-nav" name="header navigation">
 
             <!-- <button class="hamburger-button-dropbtn">
               <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
@@ -39,17 +39,17 @@
           <div class="search-bar">
             <form class="search-form" action="/action_page.php">
                 <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
-                <button type="submit"><i class="fa fa-search submit-search-button"></i></button>
+                <button type="submit" name="submit search button"><i class="fa fa-search submit-search-button"></i></button>
             </form>
           </div>
 
           <div class="nav-anchor">
-            <a href="#" name="all-recipes-button">
+            <a href="#" name="all recipes button">
               <div class="all-recipes-button">
                 <p>All</p> <p>Recipes</p></div>
             </a>
           </div>
-          <div class="nav-anchor">
+          <div class="nav-anchor" name="login button">
             <a href="#"><i class="fa fa-fw fa-user"></i><p>Login</p></a>
           </div>
 
@@ -61,32 +61,34 @@
           </div>
 
         <div class="box main-recipe-display">
-          <div class="card-1 recipe-card">Recipe1</div>
-          <div class="card-2 recipe-card">Recipe2</div>
-          <div class="card-3 recipe-card">Recipe3</div>
-          <div class="card-4 recipe-card">Recipe4</div>
-          <div class="card-5 recipe-card">Recipe5</div>
-          <div class="card-6 recipe-card">Recipe6</div>
+          <div class="card-1 recipe-card" name="default recipe 1">Recipe1</div>
+          <div class="card-2 recipe-card" name="default recipe 2">Recipe2</div>
+          <div class="card-3 recipe-card" name="default recipe 3">Recipe3</div>
+          <div class="card-4 recipe-card" name="default recipe 4">Recipe4</div>
+          <div class="card-5 recipe-card" name="default recipe 5">Recipe5</div>
+          <div class="card-6 recipe-card" name="default recipe 6">Recipe6</div>
         </div>
 
       <div class="box sidebarwrap">
-        <div class="welcome-bar">
+        <div class="welcome-bar" name="welcome user">
           <h1>Welcome,</h1>
             <h1>User</h1>
         </div>
         <div class="user-specific-nav">
+
           <div class="my-pantry user-link">
-            <a href="#"><p>My Pantry</p></a>
+            <a href="#" name="user's pantry"><p>My Pantry</p></a>
           </div>
           <div class="my-favorites user-link">
-            <a href="#"><p>My Favorite Recipes</p></a>
+            <a href="#" name="user's favorites"><p>My Favorite Recipes</p></a>
           </div>
           <div class="to-cook user-link">
-            <a href="#"><p>My Recipes <br> To Cook</p></a>
+            <a href="#" name="user's recipes's to cook"><p>My Recipes <br> To Cook</p></a>
           </div>
           <div class="cooked-recipes user-link">
-            <a href="#"><p>My Cooked Recipes</p></a>
+            <a href="#" name="user's cooked recipes"><p>My Cooked Recipes</p></a>
           </div>
+
         </div>
       </div>
 
