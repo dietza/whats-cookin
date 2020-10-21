@@ -51,6 +51,11 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function numToName(ingredientID, ingredientsData) {
+  let ingredient = ingredientsData.find(ingredient => ingredient.id === ingredientID)
+  return ingredient.name;
+}
+
 //*****************DISPLAY****************//
 
 function displayUserData() {
@@ -63,32 +68,31 @@ function displayUserData() {
     <h3> ${currentUser.displayFirstName()}! </h3>`
 }
 
+
+
 function displayRecipeCards(recipeData) {
   // recipeDisplay.innerHTML = "";
 
   let recipeListIngredients = recipeData[0].ingredients.map(ingredient => {
-    return numToName(ingredient.id, ingredientsData);
+    return ` ${numToName(ingredient.id, ingredientsData)}`;
   });
+
+  let recipeListInstructions = recipeData[0].instructions.map(instruction => {
+    return `<br>${instruction.number}. ${instruction.instruction}`;
+  })
 
   console.log('displayRecipeCards // recipeListIngredients:', recipeListIngredients);
 
-  let ingredientNames = recipeListIngredients.forEach(ingredientName => {
-    return ingredientName;
-  })
-
   document.querySelector('.card-1').innerHTML =
-  `<div class="card-1 recipe-card" name="recipe 1">
+  `<div class="card-1 recipe-card default-recipe" name="recipe 1">
     <div class='recipe-image'><img src=${recipeData[0].image}></div>
     <div class='recipe-name'><h1>${recipeData[0].name}</h1></div>
-    <div class='recipe-ingredients'><p>${recipeData[0].ingredients}</p></div>
-    <div class='recipe-instructions'><h3>${recipeData[0].instructions}</h3></div>
+    <!--<div class='recipe-ingredients'><p>${recipeListIngredients}</p></div> -->
+    <!--<div class='recipe-instructions'><h3>${recipeListInstructions}</h3></div> -->
   </div>`
 };
 
-function numToName(ingredientID, ingredientsData) {
-  let ingredient = ingredientsData.find(ingredient => ingredient.id === ingredientID)
-  return ingredient.name;
-}
+
 
 function displayPantry() {
 
