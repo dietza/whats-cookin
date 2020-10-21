@@ -27,5 +27,6 @@ This project explores the concepts of choosing classes, organizing data across l
 ## Links
 
 -[Allison Dietz](https://www.github.com/dietza)
+
 -[Jeff Woltjen](https://www.github.com/JWoltjen)
 
