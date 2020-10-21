@@ -1,4 +1,5 @@
 # What's Cookin'? 
+
   -a Javascript project by Allison Dietz and Jeff Woltjen
   
 ## Overview 
@@ -12,13 +13,16 @@ This project explores the concepts of choosing classes, organizing data across l
   - Instantiating these classes on the DOM
   In connection with the above, instantiating these classes as object literals with associated parameters onto the document object model in a coherent and aesthetically pleasing manner was perhaps the most challenging aspect of this project. It required the programmers to slow down to visualize what data was actually being passed through to which constructors, why, etc. 
   
-  -Accessing nested data with array prototype methods
+  - Accessing nested data with array prototype methods
   Only array prototype iterator methods are used ot access data nested in arrays. No for loops have been used in this project. ES6 syntax use has also been encouraged and widely implemented. 
   
 ## Victories
 
   - Getting recipe cards to display on the DOM 
   Definitely a huge victory for this project, as it requires the programmers to grab data from multiple locations and present it in newly created objects interpolated into the html. 
+  
+  - Conquering Merge Conflicts
+  Allison in particular had encountered a series of nasty merge conflicts during the construction of this project which she managed to tackle in a professional manner and put the monster back into Pandora's box. 
   
 ## Links
 
