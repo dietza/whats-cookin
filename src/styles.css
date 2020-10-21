@@ -1,219 +1,277 @@
 body {
   margin: 40px;
   font-family: 'Raleway', sans-serif;
-}
-
-p {
-  display: flex;
-  align-items: center;
-  font-size: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin-top: 0;
-  margin-bottom: 0;
-
+  background: rgb(220,255,253);
+  background: linear-gradient(180deg, rgba(220,255,253,1) 0%, rgba(164,246,224,1) 100%, rgba(179,234,245,1) 100%);
 }
 
 h1 {
   font-size: 35px;
+  font-weight: lighter;
   margin-top: 0;
   margin-bottom: 0;
 }
 
+h3 {
+  font-size: 35px;
+  font-weight: lighter;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+p {
+  font-size: 25px;
+  font-weight: 200;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+a {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+}
+
+i {
+  color: #fff;
+}
+
+button {
+  background-color: #007f5f;
+  color: #fff;
+  border: none;
+}
+
+.navbar i:hover {
+  color: #86e2d5;
+}
+
 .wrapper {
-        display: grid;
-        grid-gap: 10px;
-        grid-template-columns: 1fr 2fr 2fr;
-        grid-template-rows: 1fr 4fr;
-        background-color: #fff;
-        color: #444;
-    }
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 1fr 4fr;
+}
 
-    .box {
-        background-color: #007f5f;
-        color: #fff;
-        border-radius: 5px;
-        padding: 20px;
-        font-size: 150%;
-    }
+.box {
+  background-color: #007f5f;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
 
-    .a {
-      grid-column: 2 / 2;
-      grid-row: 1 / 1;
-      display: flex;
-      justify-content: left;
-      align-items: center;
-    }
+.navbar {
+  width: 100%;
+  background-color: #007f5f ;
+  overflow: auto;
+}
 
-    .navbar {
-      width: 100%;
-      background-color: #007f5f ;
-      overflow: auto;
-    }
+.header-nav {
+  grid-column: 2 / 3;
+  grid-row: 1 / 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
 
-    .navbar a {
-      padding: 12px;
-      color: white;
-      text-decoration: none;
-      font-size: 17px;
-      display: flex;
-      justify-content: space-between;
-    }
+.navbar a {
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
 
-    .navbar a:hover {
-      background-color: #000;
-    }
+.header-nav p {
+  font-size: 17px;
+  font-weight: 200;
+  margin: 0;
+}
 
-    .fa-search {
-      width: 10px;
-    }
+/* .hamburger-button {
+  height: 45px;
+  width: 45px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007f5f;
+  align-items: center;
+}
 
-    .hamburger-button {
-      height: 45px;
-      width: 45px;
-      border: none;
-      border-radius: 5px;
-      background-color: none;
-      align-items: center;
-    }
+.hamburger-menu-icon {
+  height: 30px;
+  width: 30px
+} */
 
-    .hamburger-menu-icon {
-      height: 30px;
-      width: 30px
-    }
+.search-bar {
+  display: flex;
+  padding-left: 20px;
+  flex-direction: row;
+  align-items: flex-start;
+}
 
-    .search-bar {
-      display: flex;
-      padding-left: 25px;
-      flex-direction: row;
-      align-items: flex-start;
-    }
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
 
-    .search-input {
-      width: 250px;
-      height: 30px;
-    }
+.search-input {
+  width: 245px;
+  height: 30px;
+}
 
-    .welcome-bar {
-    }
+.submit-search-button {
+  width: 20px;
+  height: 20px;
+}
 
-    .my-pantry {
+.fa-search {
+  padding-top: 10px;
+}
 
-    }
+.all-recipes-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
 
-    .l {
-      grid-column: 3/ 4;
-      grid-row: 1;
-    }
+.current-view-title {
+  grid-column: 3/ 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .c {
-      grid-column: 2;
-    }
+.main-recipe-display {
+  grid-column: 2 /  4 ;
+  grid-row: 2;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: 1fr 1fr;
+}
 
-    .d {
-      grid-column: 2 /  4 ;
-      grid-row: 2;
-      display: grid;
-        grid-gap: 10px;
-        grid-template-columns: repeat(3, 33%);
-        grid-template-rows: 1fr 1fr;
-      }
+.recipe-card {
+  background-color: #007f5f;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
 
-    .user-specific-nav {
-      margin-top: 20px;
-      margin-left: 5px;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      padding-top: 20px;
-      align-items: center;
-      justify-content: left;
-    }
+.card-1 {
+  grid-column: 1 / 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .sidebarwrap {
-      grid-column: 1 / 2;
-      grid-row:  1 / 4;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      padding-top: 20px;
-      align-items: center;
-      align-content: center;
-      background-color: #007f5f;
-      color: #FFF;
-    }
+.card-2 {
+  grid-column: 2 / 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .f {
-     grid-column: 3 / 3;
-     grid-row: 1;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-    }
+.card-3 {
+  grid-column: 3 / 3;
+  grid-row: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .g {
-     grid-column: 2 / 1;
-     grid-row:  2 / 2;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-    }
+.card-4 {
+  grid-column: 2 / 1;
+  grid-row:  2 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .h {
-    grid-column:  2 / 2;
-    grid-row: row 2 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+.card-5 {
+  grid-column: 2 / 3;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .i {
-    grid-column: 3 / 3;
-    grid-row: 2 / 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+.card-6 {
+  grid-column: 3 / 3;
+  grid-row: 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .j {
-    grid-column: 2 / 3;
-    grid-row: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.welcome-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    }
+.user-specific-nav {
+  margin-top: 20px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding-top: 20px;
+}
 
-    .k {
-    grid-column: 1 / 2;
-    grid-row: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
+.sidebarwrap {
+  grid-column: 1 / 2;
+  grid-row:  1 / 4;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  align-items: center;
+  align-content: center;
+  background-color: #007f5f;
+  color: #FFF;
+  margin-bottom: 10px;
+}
 
-    .l {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-  }
+.user-link a {
+  color: #fff;
+  text-decoration: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+  align-items: left;
+  justify-content: left;
+}
 
-    .dropbtn {
-      background-color: #4CAF50;
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
+a:hover {
+  color: #86e2d5;
+}
+
+/* .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
 .dropdown {
   position: relative;
   display: inline-block;
-}
+} */
 
-.dropdown-content {
+/* .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
@@ -221,15 +279,15 @@ h1 {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-}
+} */
 
-.dropdown-content a {
+/* .dropdown-content a {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
-}
+} */
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+/* .dropdown-content a:hover {background-color: #f1f1f1;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #3e8e41;} */

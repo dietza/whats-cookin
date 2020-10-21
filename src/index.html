@@ -10,75 +10,85 @@
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
         crossorigin="anonymous"
       />
-      <script type="text/javascript" src="../src/ingredients.js"></script>
-      <script type="text/javascript" src="../src/Recipe.js"></script>
-      <script type="text/javascript" src="../src/pantry.js"></script>
-      <script type="text/javascript" src="../src/User.js"></script>
-      <script type="text/javascript" src="../src/recipeRepository.js"></script>
-      <script type="text/javascript" src="../src/ingredientRepository.js"></script>
-      <script type="text/javascript" src="../data/users.js"></script>
-      <script type="text/javascript" src="../data/recipes.js"></script>
-      <script type="text/javascript" src="../data/ingredients.js"></script>
-      <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="../src/ingredients.js"></script>
+    <script type="text/javascript" src="../src/Recipe.js"></script>
+    <script type="text/javascript" src="../src/pantry.js"></script>
+    <script type="text/javascript" src="../src/User.js"></script>
+    <script type="text/javascript" src="../src/recipeRepository.js"></script>
+    <script type="text/javascript" src="../src/ingredientRepository.js"></script>
+    <script type="text/javascript" src="../data/users.js"></script>
+    <script type="text/javascript" src="../data/recipes.js"></script>
+    <script type="text/javascript" src="../data/ingredients.js"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
     <title>Whats Cookin</title>
   </head>
   <body>
     <div class="wrapper">
 
-      <div class="box a navbar">
-          <button class="hamburger-button-dropbtn">
-            <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
-          </button>
-                        <div class="dropdown-content" style="left:0;">
-                          <a href="#">My Pantry</a>
-                          <a href="#">My Favorite Recipes</a>
-                          <a href="#">Recipes to Cook</a>
-                        </div>
+        <div class="box navbar header-nav" name="header navigation">
 
-            <div class="search-bar">
-              <form class="searchForm"action="/action_page.php">
-                  <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
-                  <button type="submit"><i class="fa fa-search"></i></button>
-              </form>
-            </div>
-            <button class="display-all-recipes-button">All recipes</button>
+            <!-- <button class="hamburger-button-dropbtn">
+              <img src="../assets/hamburger (1).svg" alt="hamburger menu icon" class="hamburger-menu-icon">
+            </button>
+                      <div class="dropdown-content" style="left:0;">
+                        <a href="#">My Pantry</a>
+                        <a href="#">My Favorite Recipes</a>
+                        <a href="#">Recipes to Cook</a>
+                      </div> -->
+
+          <div class="search-bar">
+            <form class="search-form" action="/action_page.php">
+                <input type="text" placeholder="Search all recipes..." name="search" class="search-input">
+                <button type="submit" name="submit search button"><i class="fa fa-search submit-search-button"></i></button>
+            </form>
+          </div>
+
+          <div class="nav-anchor">
+            <a href="#" name="all recipes button">
+              <div class="all-recipes-button">
+                <p>All</p> <p>Recipes</p></div>
+            </a>
+          </div>
+          <div class="nav-anchor" name="login button">
             <a href="#"><i class="fa fa-fw fa-user"></i><p>Login</p></a>
-      </div>
+          </div>
 
-        <!-- <div class="box b"> -->
-          <div class="box l">
-            <p>Viewing:</p>
+        </div>
+
+          <div class="box current-view-title">
+            <p>Viewing :</p>
             <h1>All Recipes</h1>
           </div>
-        <!-- </div> -->
 
-      <div class="box d">
-        <div class="box f">Recipe1</div>
-        <div class="box g">Recipe2</div>
-        <div class="box h">Recipe3</div>
-        <div class="box i">Recipe6</div>
-        <div class="box j">Recipe1</div>
-        <div class="box k">Recipe3</div>
-      </div>
+        <div class="box main-recipe-display">
+          <div class="card-1 recipe-card" name="default recipe 1">Recipe1</div>
+          <div class="card-2 recipe-card" name="default recipe 2">Recipe2</div>
+          <div class="card-3 recipe-card" name="default recipe 3">Recipe3</div>
+          <div class="card-4 recipe-card" name="default recipe 4">Recipe4</div>
+          <div class="card-5 recipe-card" name="default recipe 5">Recipe5</div>
+          <div class="card-6 recipe-card" name="default recipe 6">Recipe6</div>
+        </div>
 
-      <div class=sidebarwrap>
-        <div class="welcome-bar">
+      <div class="box sidebarwrap">
+        <div class="welcome-bar" name="welcome user">
           <h1>Welcome,</h1>
             <h1>User</h1>
         </div>
         <div class="user-specific-nav">
-          <div class="my-pantry">
-            <p>My Pantry</p>
+
+          <div class="my-pantry user-link">
+            <a href="#" name="user's pantry"><p>My Pantry</p></a>
           </div>
-          <div class="my-favorites">
-            <p>My Favorite Recipes</p>
+          <div class="my-favorites user-link">
+            <a href="#" name="user's favorites"><p>My Favorite Recipes</p></a>
           </div>
-          <div class="to-cook">
-            <p>My To-Cook List</p>
+          <div class="to-cook user-link">
+            <a href="#" name="user's recipes's to cook"><p>My Recipes <br> To Cook</p></a>
           </div>
-          <div class="all-recipes">
-            <p>All Recipes</p>
+          <div class="cooked-recipes user-link">
+            <a href="#" name="user's cooked recipes"><p>My Cooked Recipes</p></a>
           </div>
+
         </div>
       </div>
 
