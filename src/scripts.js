@@ -44,7 +44,14 @@ function uploadData() {
   createRecipeObjects(recipeData);
   getRandomIndex(ingredientsData);
   displayUserData();
-  displayRecipeCards(recipeData);
+  displayRecipeDetails(allRecipes);
+}
+
+function createRecipeObjects(recipeData) {
+  allRecipes = recipeData.map(recipe => {
+    return new Recipe(recipe);
+  })
+  return allRecipes;
 }
 
 //*****************MISC // INSTANTIATIONS****************//
@@ -70,37 +77,30 @@ function displayUserData() {
     <h3> ${currentUser.displayFirstName()}! </h3>`
 }
 
-function createRecipeObjects(recipeData) {
-  allRecipes = recipeData.map(recipe => {
-    return new Recipe(recipe);
-  })
-
-  console.log('createRecipeObjects // allRecipes:', allRecipes);
-
-  return allRecipes;
-}
-
-function displayRecipeCards(recipeData) {
-  // recipeDisplay.innerHTML = "";
-
-  let recipeListIngredients = recipeData[0].ingredients.map(ingredient => {
-    return ` ${numToName(ingredient.id, ingredientsData)}`;
-  });
-
-  let recipeListInstructions = recipeData[0].instructions.map(instruction => {
-    return `<br>${instruction.number}. ${instruction.instruction}`;
-  })
-
-  console.log('displayRecipeCards // recipeListIngredients:', recipeListIngredients);
-
-  document.querySelector('.card-1').innerHTML =
-  `<div class="card-1 recipe-card default-recipe" name="recipe 1">
-    <div class='recipe-image'><img src=${recipeData[0].image}></div>
-    <div class='recipe-name'><h1>${recipeData[0].name}</h1></div>
-    <!-- <div class='recipe-ingredients'><p>${recipeListIngredients}</p></div> -->
-    <!-- <div class='recipe-instructions'><h3>${recipeListInstructions}</h3></div> -->
-  </div>`
-
+// function displayRecipeCards(allRecipes) {
+//   // recipeDisplay.innerHTML = "";
+//
+//
+//
+//   let recipeListIngredients = recipeData[0].ingredients.map(ingredient => {
+//     return ` ${numToName(ingredient.id, ingredientsData)}`;
+//   });
+//
+//   let recipeListInstructions = recipeData[0].instructions.map(instruction => {
+//     return `<br>${instruction.number}. ${instruction.instruction}`;
+//   })
+//
+//   console.log('displayRecipeCards // recipeListIngredients:', recipeListIngredients);
+//
+//   document.querySelector('.card-1').innerHTML =
+//   `<div class="card-1 recipe-card default-recipe" name="recipe 1">
+//     <div class='recipe-image'><img src=${recipeData[0].image}></div>
+//     <div class='recipe-name'><h1>${recipeData[0].name}</h1></div>
+//     <!-- <div class='recipe-ingredients'><p>${recipeListIngredients}</p></div> -->
+//     <!-- <div class='recipe-instructions'><h3>${recipeListInstructions}</h3></div> -->
+//   </div>`
+//
+// };
 
   // let recipeListIngredients = recipeData[0].ingredients.map(ingredient => {
   //   return ` ${numToName(ingredient.id, ingredientsData)}`;
@@ -120,9 +120,46 @@ function displayRecipeCards(recipeData) {
   //   <!--<div class='recipe-instructions'><h3>${recipeListInstructions}</h3></div> -->
   // </div>`
 
+
+function addRecipeImage(recipe) {
+  document.getElementById('#recipe-title').style.backgroundImage =
+    `url(${recipe.image})`
+}
+
+function displayRecipeDetails(allRecipes) {
+
+  allRecipes.forEach(recipe => {
+    let main = document.querySelector('.main-recipe-display');
+      let cardHTML = `
+        <section class="recipe-card" id=${recipe.id}>
+          <article class="card-photo-container">
+          <img src=${recipe.image} class="recipe-image"
+          alt="${recipe.name}" title="${recipe.name}">
+          <article class="recipe-name">
+          <p>${recipe.name}</p>
+          </article>
+          <article class="instructions-link">
+          <label>Click For Instructions</label>
+          </article>
+        </section>`
+
+      main.insertAdjacentHTML('beforeEnd', cardHTML);
+  })
+
+    // let main = document.querySelector('.main-recipe-display');
+    //   let cardHTML = `
+    //     <section class="recipe-card" id=${recipe.id}>
+    //       <article class="card-photo-container">
+    //       <img src=${recipe.image} class="card-photo-preview"
+    //       alt="${recipe.name}" title="${recipe.name}">
+    //       <article class="text">
+    //       <label>Click For Instructions</label>
+    //       </article>
+    //     </section>`
+    //
+    //   main.insertAdjacentHTML('beforeEnd', cardHTML);
+
 };
-
-
 
 function displayPantry() {
 
