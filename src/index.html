@@ -10,26 +10,23 @@
         integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
         crossorigin="anonymous"
       />
-    <script type="text/javascript" src="../src/Recipe.js"></script>
+    <!-- <script type="text/javascript" src="../src/Recipe.js"></script>
     <script type="text/javascript" src="../src/User.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/recipes.js"></script>
-    <script type="text/javascript" src="../data/ingredients.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="../data/ingredients.js"></script> -->
+    <!-- <script type="text/javascript" src="./scripts.js"></script> -->
     <title>Whats Cookin</title>
   </head>
   <body>
     <div class="wrapper">
-
         <div class="box navbar" name="header navigation">
-
           <div class="search-bar">
             <form class="search-form" action="/action_page.php">
                 <input type="text" placeholder="Search all recipes..." name="search" class="search-input" role="search input">
                 <button type="submit" name="submit search button"><i class="fa fa-search submit-search-button"></i></button>
             </form>
           </div>
-
           <div class="nav-anchor">
             <a href="#" name="all recipes button">
               <div class="all-recipes-button">
@@ -39,45 +36,38 @@
           <div class="nav-anchor" name="login button">
             <a href="#"><i class="fa fa-fw fa-user"></i><p>Login</p></a>
           </div>
-
         </div>
-
           <div class="box current-view-title">
             <p>Viewing :</p>
             <h1>All Recipes</h1>
           </div>
-
         <div class="box main-recipe-display all-recipe-cards">
-          <!-- <div class="card-1 recipe-card" name="default recipe 1">Recipe1</div>
-          <div class="card-2 recipe-card" name="default recipe 2">Recipe2</div>
-          <div class="card-3 recipe-card" name="default recipe 3">Recipe3</div>
-          <div class="card-4 recipe-card" name="default recipe 4">Recipe4</div>
-          <div class="card-5 recipe-card" name="default recipe 5">Recipe5</div>
-          <div class="card-6 recipe-card" name="default recipe 6">Recipe6</div> -->
         </div>
-
-      <div class="box sidebarwrap">
+      <div class="box sidebarwrap" name="user sidebar navigation">
         <div class="welcome-bar" name="welcome user">
           <h1>Welcome,</h1>
             <h3>User</h3>
         </div>
         <div class="user-specific-nav">
-
           <div class="my-pantry user-link">
-            <a href="#" name="user's pantry"><p>My Pantry</p></a>
+            <a href="#" name="user's pantry" role="display user's pantry"><p>My Pantry</p></a>
           </div>
           <div class="my-favorites user-link">
-            <a href="#" name="user's favorites"><p>My Favorite Recipes</p></a>
+            <a href="#" name="user's favorites" role="display user's favorited recipes"><p>My Favorite Recipes</p></a>
           </div>
           <div class="to-cook user-link">
-            <a href="#" name="user's recipes's to cook"><p>My Recipes <br> To Cook</p></a>
+            <a href="#" name="user's recipes's to cook" role="display user's planned recipes"><p>My Recipes <br> To Cook</p></a>
           </div>
           <div class="cooked-recipes user-link">
-            <a href="#" name="user's cooked recipes"><p>My Cooked Recipes</p></a>
+            <a href="#" name="user's cooked recipes" role="display user's cooked recipes"><p>My Cooked Recipes</p></a>
           </div>
-
         </div>
       </div>
-
   </body>
+  <script type="text/javascript" src="../src/Recipe.js"></script>
+  <script type="text/javascript" src="../src/User.js"></script>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/recipes.js"></script>
+  <script type="text/javascript" src="../data/ingredients.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
 </html>

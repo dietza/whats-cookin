@@ -82,14 +82,6 @@ label {
   align-items: center;
 }
 
-/* .header-nav {
-  grid-column: 2 / 3;
-  grid-row: 1 / 1;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-} */
-
 .navbar a {
   padding: 15px;
   color: #fff;
