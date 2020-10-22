@@ -25,25 +25,17 @@ let allRecipeCards = document.querySelectorAll(".recipe-card");
 // ************EVENT LISTENERS***************//
 window.addEventListener('load', function () {
  uploadData();
-
- myPantryBtn.addEventListener('click', displayPantry);
-
- myFavoritesBtn.addEventListener('click', displayFavorites);
-
- myToCookBtn.addEventListener('click', displayRecipesToCook);
-
- myCookedBtn.addEventListener('click', displayCookedRecipes);
-
 })
 
+myPantryBtn.addEventListener('click', displayPantry);
+
+myFavoritesBtn.addEventListener('click', displayFavorites);
+
+myToCookBtn.addEventListener('click', displayRecipesToCook);
+
+myCookedBtn.addEventListener('click', displayCookedRecipes);
 // ************EVENT HANDLERS****************//
-// myPantryBtn.addEventListener('click', displayPantry);
-//
-// myFavoritesBtn.addEventListener('click', displayFavorites);
-//
-// myToCookBtn.addEventListener('click', displayRecipesToCook);
-//
-// myCookedBtn.addEventListener('click', displayCookedRecipes);
+
 
 //*****************ONLOAD******************//
 function uploadData() {
@@ -107,6 +99,7 @@ function displayRecipeDetails(allRecipes) {
 };
 
 function displayPantry() {
+  document.querySelector('.main-recipe-display').innerHTML = "";
   let ingredientNames = currentUser.pantry.forEach(ingredient => {
     let ingredientName = numToName(ingredient.ingredient, ingredientsData);
     let main = document.querySelector('.main-recipe-display');
@@ -114,9 +107,17 @@ function displayPantry() {
     <li><input type="checkbox" class="pantry-checkbox" id="${ingredient.id}">
       <label for="${ingredientName}">${ingredientName},
       ${ingredient.amount}</label></li>`
-    main.insertAdjacentHTML('beforeEnd', pantryHTML)
+    main.insertAdjacentHTML('beforeEnd', pantryHTML);
   })
+  displayCurrentTitle();
 };
+
+function displayCurrentTitle() {
+  let currentTitle = document.querySelector('.current-view-title');
+  currentTitle.innerHTML =
+    `<p>Viewing :</p>
+    <h1>My Pantry</h1>`;
+}
 
 function displayFavorites() {
 
