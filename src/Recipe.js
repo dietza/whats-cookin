@@ -8,9 +8,9 @@ class Recipe {
     this.tags = recipe.tags;
   }
 
-  getCost(selectedRecipe, ingredientsArr) {
+  getCost(selectedRecipe, ingredientsData) {
     const result = selectedRecipe.ingredients.reduce((total, currentIngredient) => {
-        ingredientsArr.find(ingredient => {
+        ingredientsData.find(ingredient => {
          ingredient.id === currentIngredient.id
           return total += ingredient.estimatedCostInCents
         })
