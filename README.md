@@ -1,51 +1,32 @@
-# What's Cookin'? Starter Kit 
+# What's Cookin'? 
 
-The details of this project are outlined in the <a href="https://frontend.turing.io/projects/whats-cookin.html" target="\__blank">project spec</a>.
+  -a Javascript project by Allison Dietz and Jeff Woltjen
+  
+## Overview 
 
-## Set Up 
+This project explores the concepts of choosing classes, organizing data across large arrays, array prototype iterator methods, and test-driven development implementing chai frameworks. The project spanned approximately 10 days as part of Turing Front End Module 2's paired project. 
 
-1. Within your group, decide on one person to have the project repository on their Github account. This person will *fork* this repository - on the top right corner of the page, click the fork button. 
-2. Both group members should then clone down the forked repository (make sure that everyone is added as a collaborator as well). Since you don't want your project to be named "whats-cookin-starter-kit", add an optional argument after the repo url when cloning. The command should look like this: `git clone [remote-address] [what you want to name the repo]`.
-3. Once you have cloned the repo, change into the directory and install the project dependencies. Run npm install to install project dependencies.
-4. Run open src/index.html in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-5. Make sure both members of your team are collaborators on the forked repo.
+## Challenges 
+  - Organizing data into classes
+  This was the first project at Turing where the amount of data avaialble gave programmers discretion in terms of how that data was organized and displayed. There were several available options but the challenge lied in picking an option and seeing it through.
+  
+  - Instantiating these classes on the DOM
+  In connection with the above, instantiating these classes as object literals with associated parameters onto the document object model in a coherent and aesthetically pleasing manner was perhaps the most challenging aspect of this project. It required the programmers to slow down to visualize what data was actually being passed through to which constructors, why, etc. 
+  
+  - Accessing nested data with array prototype methods
+  Only array prototype iterator methods are used ot access data nested in arrays. No for loops have been used in this project. ES6 syntax use has also been encouraged and widely implemented. 
+  
+## Victories
 
-## Testing 
+  - Getting recipe cards to display on the DOM 
+  Definitely a huge victory for this project, as it requires the programmers to grab data from multiple locations and present it in newly created objects interpolated into the html. 
+  
+  - Conquering Merge Conflicts
+  Allison in particular had encountered a series of nasty merge conflicts during the construction of this project which she managed to tackle in a professional manner and put the monster back into Pandora's box. 
+  
+## Links
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran npm install, then the tooling you need to start testing is already installed (mocha and chai).
+-[Allison Dietz](https://www.github.com/dietza)
 
-## Linting Your Code 
+-[Jeff Woltjen](https://www.github.com/JWoltjen)
 
-Run the command in your terminal npm run lint to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
-
-Your linter will look only at the JavaScript files you have within the src and the test directories.
-
-
-## Data Model
-### Users
-```js
-{
-  "id": [number],
-  "name": [string],
-  "pantry": [array of objects with amount and ingredient id properties]
-},
-```
-
-### Recipes
-```js
-{
-  "ingredients" [array of objects with ingredients ids(connection to ingredients), ingredient names, and quantity data],
-  "instructions": [array of objects with instructions properties and numbered steps],
-  "name": [string],
-  "tags": [array of strings representing info about the recipes]
-}
-```
-
-### Ingredients
-```js
-{
-  "estimatedCostInCents": [number],
-  "id": [number -- connection to users and recipes],
-  "name": [string]
-}
-```
