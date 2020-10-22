@@ -19,13 +19,11 @@ let myToCookBtn = document.querySelector(".to-cook");
 let myCookedBtn = document.querySelector(".cooked-recipes");
 
 let recipeDisplay = document.querySelector(".main-recipe-display");
-let allRecipeCards = document.querySelectorAll(".recipe-card");
-
 
 // ************EVENT LISTENERS***************//
 window.addEventListener('load', function () {
  uploadData();
-})
+});
 
 myPantryBtn.addEventListener('click', displayPantry);
 
@@ -34,6 +32,8 @@ myFavoritesBtn.addEventListener('click', displayFavorites);
 myToCookBtn.addEventListener('click', displayRecipesToCook);
 
 myCookedBtn.addEventListener('click', displayCookedRecipes);
+
+allRecipesBtn.addEventListener('click', displayAllRecipes);
 // ************EVENT HANDLERS****************//
 
 
@@ -53,7 +53,7 @@ function createRecipeObjects(recipeData) {
   return allRecipes;
 };
 
-//*****************MISC // INSTANTIATIONS****************//
+//*****************MISC****************//
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -96,6 +96,44 @@ function displayRecipeDetails(allRecipes) {
 
       main.insertAdjacentHTML('beforeEnd', cardHTML);
   })
+};
+
+function displaySelectedRecipe(event) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
+  fullRecipeInfo.style.display = "inline";
+  let recipeId = event.target.closest(".recipe-card").id;
+  let recipe = recipeData.find(recipe => {
+    recipe.id === recipeId;
+  })
+  addRecipeImage(recipe)
+  generateRecipeTitle(recipe);
+  generateIngredients(recipe);
+  fullRecipeInfo.insertAdjacentHTML("beforeBegin", '<section id="overlay"></section>')
+};
+
+function generateIngredients(recipe) {
+  let selectedRecipe =
+    recipe.ingredients.map(recipeIngredient => {
+      ingredientsData.forEach(ingredient => {
+        if(ingredient.id === recipeIngredient.id) {
+          recipeIngredient.name = ingredient.name;
+        }
+      })
+      return recipeIngredient;
+    })
+};
+
+function generateInstructions(recipe) {
+  let fullRecipeInfo = document.querySelector(".recipe-instructions");
+  let instructionsList = "";
+  let instructions = recipe.instructions.map(instruction => {
+    return instruction.instruction;
+  })
+  instructions.forEach(instruction => {
+    instructionList += `<li> ${instruction} </li>`
+  })
+  fullRecipeInfo.insertAdjacentHTML('beforeEnd', `<p>${instructions}</p>`);
+  fullRecipeInfo.insertAdjacentHTML('beforeEnd', `<ol>${instructionsList}</ol>`);
 };
 
 function displayPantry() {
