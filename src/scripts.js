@@ -11,8 +11,8 @@ let currentViewTitle = document.querySelector(".current-view-title");
 
 
 let searchBtn = document.querySelector(".fa-search");
-let searchForm = document.querySelector("searchForm");
-let searchInput = document.querySelector("search-input");
+let searchForm = document.querySelector(".searchForm");
+let searchInput = document.querySelector(".search-input");
 
 let myPantryBtn = document.querySelector(".my-pantry");
 let myFavoritesBtn = document.querySelector(".my-favorites");
@@ -29,10 +29,15 @@ window.addEventListener('load', function () {
  uploadData()
 })
 
+
 // ************EVENT HANDLERS****************//
+myPantryBtn.addEventListener('click', displayPantry);
 
+myFavoritesBtn.addEventListener('click', displayFavorites);
 
+myToCookBtn.addEventListener('click', displayRecipesToCook);
 
+myCookedBtn.addEventListener('click', displayCookedRecipes);
 
 //*****************ONLOAD******************//
 function uploadData() {
@@ -127,7 +132,6 @@ function addRecipeImage(recipe) {
 }
 
 function displayRecipeDetails(allRecipes) {
-
   allRecipes.forEach(recipe => {
     let main = document.querySelector('.main-recipe-display');
       let cardHTML = `
@@ -145,23 +149,20 @@ function displayRecipeDetails(allRecipes) {
 
       main.insertAdjacentHTML('beforeEnd', cardHTML);
   })
-
-    // let main = document.querySelector('.main-recipe-display');
-    //   let cardHTML = `
-    //     <section class="recipe-card" id=${recipe.id}>
-    //       <article class="card-photo-container">
-    //       <img src=${recipe.image} class="card-photo-preview"
-    //       alt="${recipe.name}" title="${recipe.name}">
-    //       <article class="text">
-    //       <label>Click For Instructions</label>
-    //       </article>
-    //     </section>`
-    //
-    //   main.insertAdjacentHTML('beforeEnd', cardHTML);
-
 };
 
 function displayPantry() {
+
+  let ingredientNames = currentUser.pantry.forEach(ingredient => {
+    let ingredientName = numToName(ingredientID, ingredientsData);
+    let main = document.querySelector('.main-recipe-display');
+    let pantryHTML = `
+    <li><input type="checkbox" class="pantry-checkbox" id="${ingredient.id}">
+      <label for="${ingredientName}">${ingredientName},
+      ${ingredient.amount}</label></li>`
+
+      document.querySelector('pantry-list').insertAdjacentHTML('beforeEnd', pantryHTML)
+  })
 
 };
 
