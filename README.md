@@ -1,5 +1,7 @@
 # 🍔 What's Cookin' ? 
   
+  ###### A JavaScript project by Allison Dietz and Jeff Woltjen
+  
 ## Overview 
 
 In this project we are building an application that allows the user to decide - What's Cookin'? Arriving on the page, the user should see recipes to choose from, and be able to search a diverse collection of recipes by name, ingredients, or category tags. They should also see their personal sidebar where they can select view the stored contents of their own pantry, their favorited recipes, the selection of recipes they intend to cook, or their previously cooked recipes. 
